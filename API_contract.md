@@ -19,8 +19,8 @@ Example Request Body:
 ```json
   {
     "golf_course_id": 100,
-    "date:" "08/04/2021",
-    "tee_time:" "09:30",
+    "date": "08/04/2021",
+    "tee_time": "09:30",
     "open_spots": 2,
     "number_of_holes": "9",
     "host": 1,
@@ -37,8 +37,8 @@ Example Response:
       "type": "events",
       "attributes": {
         "golf_course_id": 100,
-        "date:" "08/04/2021",
-        "tee_time:" "09:30",
+        "date": "08/04/2021",
+        "tee_time": "09:30",
         "open_spots": 2,
         "number_of_holes": "9",
         "host": 1,
