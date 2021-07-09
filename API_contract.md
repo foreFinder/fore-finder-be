@@ -1,4 +1,4 @@
-### POST Add Tee Time
+### POST Host & Add Tee Time (#13, #21)
 ##### Resource URL
 ```
 POST /api/v1/event
@@ -48,6 +48,31 @@ Example Response:
    }
 }
 ```
+### GET Tee Time ()
+##### Resource URL
+```
+GET /api/v1/event/{event_id}
+```
+Example Response:    
+```json
+{
+  "data": {
+      "id": 1,
+      "type": "event",
+      "attributes": {
+        "course_id": 100,
+        "date": "08/04/2021",
+        "tee_time": "09:30",
+        "open_spots": 2,
+        "number_of_holes": "9",
+        "private": true,
+        "host_id": 1,
+        "invitees": [2, 3],
+        "players": [2]
+     }
+   }
+}
+```
 
 ### POST Accept or Decline Tee Time
 ##### Resource URL
@@ -84,4 +109,3 @@ Example Response:
    }
 }
 ```
-
