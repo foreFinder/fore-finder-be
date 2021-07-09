@@ -49,7 +49,7 @@ Example Response:
 }
 ```
 
-### POST Accept Tee Time
+### POST Accept or Decline Tee Time
 ##### Resource URL
 ```
 POST /api/v1/player-events
@@ -59,12 +59,14 @@ Request Parameters:
 | --- | --- | --- |
 | user_id | id of the user accepting tee time | Yes - must be sent in body of request |
 | event_id | id of the event accpeted | Yes - must be sent in body of request |
+| invite_accepted | true or false | Yes - must be sent in body of request |
 
 Example Request Body:
 ```json
   {
     "user_id": 2,
-    "event_id": 1
+    "event_id": 1,
+    "invite_accepted": true
   }
 ```
 
@@ -76,7 +78,8 @@ Example Response:
       "type": "player-events",
       "attributes": {
        "user_id": 2,
-       "event_id": 1
+       "event_id": 1,
+       "invite_accepted": true
      }
    }
 }
