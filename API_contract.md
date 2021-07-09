@@ -1,8 +1,35 @@
-
+GET /api/v1/courses - fetch details for all courses
 POST /api/v1/event - host creates a tee time
 GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
 POST /api/v1/player-events - accept or decline invitation
 GET /api/v1/players - fetch details for all players
+
+### GET All courses detail ()
+##### Resource URL
+```
+GET /api/v1/courses
+```
+Example Response:    
+```json
+{
+  "data": {
+      "id": 1,
+      "type": "courses",
+      "attributes": [{
+        "course_id": 100,
+        "name": "08/04/2021",
+        "tee_time": "09:30",
+        "open_spots": 2,
+        "number_of_holes": "9",
+        "private": true,
+        "host_id": 1,
+        "invitees": [2, 3],
+        "players": [2]
+     }
+   ]
+   }
+}
+```
 
 ### POST Host & Add Tee Time (#13, #21)
 ##### Resource URL
