@@ -11,21 +11,21 @@ Request Parameters:
 | tee_time | tee time | Yes - must be sent in body of request |
 | open_spots | number of spots | Yes - must be sent in body of request |
 | number_of_holes | number of holes played | Yes - must be sent in body of request |
-| host | id of person initiating event | Yes - must be sent in body of request |
-| invites | id of players invited | Yes - must be sent in body of request |
+| host_id | id of player initiating event | Yes - must be sent in body of request |
+| invitees | id of players invited | Yes - must be sent in body of request |
 | private | limited to friends only? | Yes - must be sent in body of request |
 
 Example Request Body:
 ```json
   {
-    "golf_course_id": 100,
+    "course_id": 100,
     "date": "08/04/2021",
     "tee_time": "09:30",
-    "open_spots": 2,
+    "open_spots": 1,
     "number_of_holes": "9",
-    "host": 1,
-    "invites": [2],
     "private": true
+    "host_id": 1,
+    "invitees": [2]
   }
 ```
 
@@ -36,14 +36,14 @@ Example Response:
       "id": 1,
       "type": "events",
       "attributes": {
-        "golf_course_id": 100,
+        "course_id": 100,
         "date": "08/04/2021",
         "tee_time": "09:30",
-        "open_spots": 2,
+        "open_spots": 1,
         "number_of_holes": "9",
-        "host": 1,
-        "invites": [2],
         "private": true
+        "host_id": 1,
+        "invitees": [2]
      }
    }
 }
