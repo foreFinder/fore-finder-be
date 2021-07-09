@@ -21,7 +21,7 @@ RSpec.describe 'Create Event API Endpoint' do
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
-      post 'api/v1/event', headers: headers, params:JSON.generate(event_params)
+      post '/api/v1/event', headers: headers, params:JSON.generate(event_params)
 
       event_data = JSON.parse(response.body, symbolize_names: true)
 
@@ -88,7 +88,7 @@ RSpec.describe 'Create Event API Endpoint' do
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
-      post 'api/v1/event', headers: headers, params:JSON.generate(event_params)
+      post '/api/v1/event', headers: headers, params:JSON.generate(event_params)
 
       event_data = JSON.parse(response.body, symbolize_names: true)
 
