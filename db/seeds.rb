@@ -24,7 +24,12 @@ Course.create!(id: 3, name: 'Riverdale Golf Club', street: '13300 Riverdale Road
 Course.create!(id: 4, name: 'Willis Case Golf Course', street: '4999 Vrain Street', city: 'Denver', state: 'Colorado', zip_code: '80212', phone: '720.865.0700', cost: 58)
 
 Event.create!(id: 1, course_id: 1, date: '08/01/2021', tee_time: '13:20', open_spots: '3', number_of_holes: "9", player_id: 1, private: true)
+Event.create!(id: 2, course_id: 2, date: '08/05/2021', tee_time: '14:20', open_spots: '2', number_of_holes: "18", player_id: 2, private: true)
+Event.create!(id: 3, course_id: 3, date: '08/10/2021', tee_time: '15:20', open_spots: '1', number_of_holes: "9", player_id: 3, private: false)
 
 Friendship.create!(id: 1, follower_id: 1, followee_id: 2)
+Friendship.create!(id: 2, follower_id: 2, followee_id: 3)
 
 PlayerEvent.create!(player_id: 2, event_id: 1, invite_accepted: true)
+PlayerEvent.create!(player_id: 3, event_id: 2, invite_accepted: true)
+PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: true)

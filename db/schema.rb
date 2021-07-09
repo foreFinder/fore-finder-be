@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_224951) do
+ActiveRecord::Schema.define(version: 2021_07_09_014929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2021_07_08_224951) do
     t.string "tee_time"
     t.integer "open_spots"
     t.string "number_of_holes"
-    t.string "player_id"
     t.boolean "private"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "host_id"
   end
 
   create_table "friendships", force: :cascade do |t|
