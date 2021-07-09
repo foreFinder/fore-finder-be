@@ -6,7 +6,7 @@ POST /api/v1/event
 Request Parameters:
 | Request Parameter | Description | Required? |
 | --- | --- | --- |
-| golf_course_id | id of the course that is booked | Yes - must be sent in body of request |
+| course_id | id of the course that is booked | Yes - must be sent in body of request |
 | date | date of tee time | Yes - must be sent in body of request |
 | tee_time | tee time | Yes - must be sent in body of request |
 | open_spots | number of spots | Yes - must be sent in body of request |
