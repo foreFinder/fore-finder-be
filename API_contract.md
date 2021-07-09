@@ -76,8 +76,8 @@ Example Response:
         "number_of_holes": "9",
         "private": true,
         "host_id": 1,
-        "invitees": [2]
-     }
+        "invitees": [2],
+        "players": []     }
    }
 }
 ```
