@@ -1,3 +1,9 @@
+
+POST /api/v1/event - host creates a tee time
+GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
+POST /api/v1/player-events - accept or decline invitation
+GET /api/v1/players - fetch details for all players
+
 ### POST Host & Add Tee Time (#13, #21)
 ##### Resource URL
 ```
@@ -106,6 +112,34 @@ Example Response:
        "event_id": 1,
        "invite_accepted": true
      }
+   }
+}
+```
+### GET All Player Details ()
+##### Resource URL
+```
+GET /api/v1/players
+```
+Example Response:    
+```json
+{
+  "data": {
+      "id": 1,
+      "type": "players",
+      "attributes": [
+        {
+         "player_id": 1,
+         "name": "Eric Rabun'",
+         "friends": 1,
+         "events": [1]
+        },
+        {
+         "player_id": 2,
+         "name": "Tyson McNutt",
+         "friends": 1,
+         "events": []
+        }
+      ]
    }
 }
 ```
