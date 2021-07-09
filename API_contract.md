@@ -21,26 +21,26 @@ Example Response:
       "id": 1,
       "type": "course",
       "attributes": {
-         name: 'Green Valley Ranch Golf Club',
-         street: '4900 Himalaya Road',
-         city: 'Denver',
-         state: 'Colorado',
-         zip: '80249',
-         phone: '303.371.3131',
-         cost: 80
+         "name": "Green Valley Ranch Golf Club",
+         "street": "4900 Himalaya Road",
+         "city": "Denver",
+         "state": "Colorado",
+         "zip": "80249",
+         "phone": "303.371.3131",
+         "cost": 80
         }
       },
      {
      "id": 2,
-     "type: "course",
+     "type": "course",
      "attributes": {
-        name: 'City Park Golf Course',
-        street: '3181 E. 23rd Avenue',
-        city: 'Denver',
-        state: 'Colorado',
-        zip: '80205',
-        phone: '720.865.3410',
-        cost: 65
+        "name": "City Park Golf Course",
+        "street": "3181 E. 23rd Avenue",
+        "city": "Denver",
+        "state": "Colorado",
+        "zip": "80205",
+        "phone": "720.865.3410",
+        "cost": 65
       }
      } 
    ]
@@ -116,7 +116,7 @@ Example Response:
         "number_of_holes": "9",
         "private": true,
         "host_id": 1,
-        "invitees": [2, 3],
+        "invitees": [2],
         "players": [2]
      }
    }
@@ -171,10 +171,12 @@ Example Response:
       "type": "players",
       "attributes": [
         {
-         "name": "Eric Rabun'",
+         "name": "Eric Rabun",
          "friends": 1,
          "events": [1]
-        },
+        }
+       },
+        {
       "id": 2,
       "type": "players",
       "attributes": [
@@ -183,7 +185,7 @@ Example Response:
          "friends": 1,
          "events": []
         }
+       }
       ]
    }
-}
 ```
