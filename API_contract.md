@@ -23,7 +23,7 @@ Example Request Body:
     "tee_time": "09:30",
     "open_spots": 1,
     "number_of_holes": "9",
-    "private": true
+    "private": true,
     "host_id": 1,
     "invitees": [2]
   }
@@ -41,7 +41,7 @@ Example Response:
         "tee_time": "09:30",
         "open_spots": 1,
         "number_of_holes": "9",
-        "private": true
+        "private": true,
         "host_id": 1,
         "invitees": [2]
      }
