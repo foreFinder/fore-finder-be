@@ -93,7 +93,8 @@ Example Response:
         "private": true,
         "host_id": 1,
         "invitees": [2],
-        "players": []     }
+        "players": []
+     }
    }
 }
 ```
