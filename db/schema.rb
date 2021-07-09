@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_171927) do
+ActiveRecord::Schema.define(version: 2021_07_09_014215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,32 +20,50 @@ ActiveRecord::Schema.define(version: 2021_07_08_171927) do
     t.string "street"
     t.string "city"
     t.string "state"
-    t.integer "zip"
+    t.string "zip_code"
     t.string "phone"
-    t.integer "cost"
+    t.string "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "current_tee_times", force: :cascade do |t|
-    t.string "location"
-    t.date "date"
-    t.time "time"
-    t.integer "openSpots"
-    t.string "host"
-    t.text "players"
-    t.text "invitees"
+  create_table "events", force: :cascade do |t|
+    t.string "course_id"
+    t.string "date"
+    t.string "tee_time"
+    t.integer "open_spots"
+    t.string "number_of_holes"
     t.boolean "private"
-    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "host_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "follower_id"
+    t.integer "followee_id"
+  end
+
+  create_table "player_events", force: :cascade do |t|
     t.bigint "player_id"
-    t.index ["course_id"], name: "index_current_tee_times_on_course_id"
-    t.index ["player_id"], name: "index_current_tee_times_on_player_id"
+    t.bigint "event_id"
+    t.boolean "invite_accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_player_events_on_event_id"
+    t.index ["player_id"], name: "index_player_events_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.text "friends"
-    t.string "currentTeeTimes"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "current_tee_times", "courses"
-  add_foreign_key "current_tee_times", "players"
+  add_foreign_key "player_events", "events"
+  add_foreign_key "player_events", "players"
 end
