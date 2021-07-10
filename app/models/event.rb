@@ -10,5 +10,5 @@ class Event < ApplicationRecord
   validates :open_spots, presence: true
   validates :number_of_holes, presence: true
   validates :host_id, presence: true
-  validates :private, presence: true
+  validates :private, inclusion: [true, false]
 end
