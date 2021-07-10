@@ -15,6 +15,10 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of :open_spots }
     it { should validate_presence_of :number_of_holes }
     it { should validate_presence_of :host_id }
+<<<<<<< HEAD
     it { should validate_presence_of :private }
+=======
+    it { should validate_inclusion_of(:private).in_array([true, false])}
+>>>>>>> d8284c62af6076b725c790724222ff3c394a6814
   end
 end

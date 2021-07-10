@@ -10,5 +10,9 @@ class Event < ApplicationRecord
   validates :open_spots, presence: true
   validates :number_of_holes, presence: true
   validates :host_id, presence: true
+<<<<<<< HEAD
   validates :private, presence: true
+=======
+  validates :private, inclusion: [true, false]
+>>>>>>> d8284c62af6076b725c790724222ff3c394a6814
 end
