@@ -7,6 +7,7 @@ class Api::V1::EventsController < ApplicationController
       invitees << PlayerEvent.create!(player_id: invitee, event_id: event.id)
     end
   end
+end
 
   private
 
