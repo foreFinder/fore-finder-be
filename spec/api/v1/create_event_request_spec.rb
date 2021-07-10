@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Create Event API Endpoint' do
   describe 'happy path' do
-    it 'can create a new event' do
+    xit 'can create a new event' do
       player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
       player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
       player_3 = Player.create!(id: 3, name: 'player 3', phone: "999.999.1236", email: "test3@test.com")
@@ -70,7 +70,7 @@ RSpec.describe 'Create Event API Endpoint' do
   end
 
   describe "sad path" do
-    it 'returns an error if missing a parameter' do
+    xit 'returns an error if missing a parameter' do
       player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
       player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
       player_3 = Player.create!(id: 3, name: 'player 3', phone: "999.999.1236", email: "test3@test.com")
