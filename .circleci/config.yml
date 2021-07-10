@@ -1,19 +1,74 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2
-  postgres-rspec: sbc-orbs/postgres-rspec@0.0.28
-
-jobs:
-  build:
+executors:
+  default:
+    working_directory: ~/fore-finder-be
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+      - image: circleci/ruby:2.5.3
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLE_RETRY: 3
+          BUNDLER_VERSION: 2.2.19
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: ''
+      - image: circleci/mysql:8.0.18
+        command: [--default-authentication-plugin=mysql_native_password]
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          MYSQL_ROOT_HOST: '%'
+
+commands:
+  configure_bundler:
+    description: Configure bundler
     steps:
-      - checkout
       - run:
-          name: Configure Bundler
+          name: Configure bundler
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
             gem install bundler
-      - postgres-rspec/install
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - fore-finder-be-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - fore-finder-be-
+      - configure_bundler
+      - run:
+          name: Install bundle
+          command: bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      - run:
+          name: Setup DB
+          command: bundle exec rails db:create db:schema:load --trace
+      - run:
+          name: RSpec
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format progress
+      - store_artifacts:
+          path: coverage
+      - save_cache:
+          key: fore-finder-be-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./fore-finder-be
+
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - build
