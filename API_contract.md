@@ -21,7 +21,6 @@ POST /api/v1/player-events - accept or decline invitation
 GET /api/v1/players - fetch details for all players
 
 ### GET All courses detail
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
 ##### Resource URL
 ```
 GET /api/v1/courses
@@ -29,51 +28,60 @@ GET /api/v1/courses
 Example Response:    
 ```json
 {
-<<<<<<< HEAD
-  "data": {
-      "id": 1,
-      "type": "courses",
-      "attributes": [{
-        "course_id": 100,
-        "name": "08/04/2021",
-        "tee_time": "09:30",
-        "open_spots": 2,
-        "number_of_holes": "9",
-        "private": true,
-        "host_id": 1,
-        "invitees": [2, 3],
-        "players": [2]
-     }
-   ]
-=======
   "data": [
-     {
-      "id": 1,
-      "type": "course",
-      "attributes": {
-         "name": "Green Valley Ranch Golf Club",
-         "street": "4900 Himalaya Road",
-         "city": "Denver",
-         "state": "Colorado",
-         "zip": "80249",
-         "phone": "303.371.3131",
-         "cost": 80
+    {
+        "id": "1",
+        "type": "course",
+        "attributes": {
+            "name": "Green Valley Ranch Golf Club",
+            "street": "4900 Himalaya Road",
+            "city": "Denver",
+            "state": "Colorado",
+            "zip_code": "80249",
+            "phone": "303.371.3131",
+            "cost": "80"
+          }
+    },
+    {
+        "id": "2",
+        "type": "course",
+        "attributes": {
+            "name": "City Park Golf Course",
+            "street": "3181 E. 23rd Avenue",
+            "city": "Denver",
+            "state": "Colorado",
+            "zip_code": "80205",
+            "phone": "720.865.3410",
+            "cost": "65"
         }
-      },
-     {
-     "id": 2,
-     "type": "course",
-     "attributes": {
-        "name": "City Park Golf Course",
-        "street": "3181 E. 23rd Avenue",
-        "city": "Denver",
-        "state": "Colorado",
-        "zip": "80205",
-        "phone": "720.865.3410",
-        "cost": 65
-      }
-     } 
-   ]
+    },
+    {
+          "id": "3",
+          "type": "course",
+          "attributes": {
+              "name": "Riverdale Golf Club",
+              "street": "13300 Riverdale Road",
+              "city": "Brighton",
+              "state": "Colorado",
+              "zip_code": "80602",
+              "phone": "303.659.4700",
+              "cost": "74"
+          }
+    },
+    {
+          "id": "4",
+          "type": "course",
+          "attributes": {
+              "name": "Willis Case Golf Course",
+              "street": "4999 Vrain Street",
+              "city": "Denver",
+              "state": "Colorado",
+              "zip_code": "80212",
+              "phone": "720.865.0700",
+              "cost": "58"
+          }
+    }
+  ]
 }
 ```
 ### GET All Events

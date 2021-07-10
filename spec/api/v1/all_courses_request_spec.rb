@@ -50,7 +50,6 @@ RSpec.describe "All courses API endpoint" do
       expect(response).to be_successful
 
       all_courses = JSON.parse(response.body, symbolize_names: true)
-      require "pry"; binding.pry
       expect(all_courses[:data]).to be_an(Array)
       expect(all_courses[:data]).to be_empty
     end
