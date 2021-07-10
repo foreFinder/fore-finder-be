@@ -1,0 +1,19 @@
+language: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+services:
+- postgresql
+deploy:
+  skip_cleanup: 'true'
+  provider: heroku
+  api_key:
+    secure: PpwQbpP0VV2zCTjZel+uK59sLqjwDFLc88XPLNBhVVIcE8qn3T9RQFwUX0XW5KTOXrrZCWAca/vmldDLjtuMv2PTkRg9bUy4ZeJa73+5pzoK9qUemX5D9iunijHGG6nPNbo3mYIHNRD8rNKsXlzTyl6yzGkHnMRgB+D7IOJkRzRvBl03AHpmuiMljnSBsCE7WRl7uvOxTum7VZaFlgE0MF7CvNJLiybANfM95myzK/x2qUhI4hds11WLlu793W/578D6JHelaxNJ0BC4IBAsf+jjPoUdYrWuIiglQw9rAtoOxLxMiQPHbZTMrQf/xi3/Gp8kekvsBSWyYzWI5pMa66XAAob4ulbdr4giqs9H+qAkYvDCz/F4jpYrDRvsbfx5sqE0EO4ApNQeQ/eWxP7GnlZf/GJS/8YZtM6cgzorGYQusyuLQ/7Z0H5lvT+ClMBSxqKgDgkbCUHZf0kJ3KgxTDt9AFTeAlIUYpfQ1ISGzCMWYtvUa7Hl/+0YgB4tDYK2MK7u4EVejiDa3lV94G/66RsUomTgZ3dapUULE3szqTgowV48qzcKz34IAo0aBvkQ5E//sMAkdW10F93zzO6IMdpv4om7sPwrzBtzrPh1lR5N64VnJw8Ze9OygeE2wLstnUEYKpcUapcINL2/Z8IuLs0dPqjhaMVb5wkFCcbq0iw=
+  app: turing-fore-finder-be
+  on:
+    repo: foreFinder/fore-finder-be
+    branch: main
