@@ -11,4 +11,16 @@ class Event < ApplicationRecord
   validates :number_of_holes, presence: true
   validates :host_id, presence: true
   validates :private, inclusion: [true, false]
+
+  def self.invitees
+
+  end
+
+  def self.players
+
+  end
+
+  def self.calculate_open_spots
+
+  end
 end
