@@ -1,5 +1,9 @@
 GET /api/v1/courses - fetch details for all courses
 
+GET /api/v1/events - fetch details for all courses
+
+GET /api/v1/players/{player_id}/events - fetch all events for a single player
+
 POST /api/v1/events - host creates a tee time
 
 GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
@@ -44,6 +48,67 @@ Example Response:
       }
      } 
    ]
+}
+```
+### GET All Events
+##### Resource URL
+```
+POST /api/v1/events
+```
+Optional - add query parameter to only show public events
+```
+POST /api/v1/events?private=false
+```
+
+Example Response:    
+```json
+{
+  "data": [
+  {
+      "id": 1,
+      "type": "event",
+      "attributes": {
+        "course_id": 100,
+        "date": "08/04/2021",
+        "tee_time": "09:30",
+        "open_spots": 1,
+        "number_of_holes": "9",
+        "private": true,
+        "host_id": 1,
+        "invitees": [2],
+        "players": []
+     }
+   },
+   {
+      "id": 2,
+      "type": "event",
+      "attributes": {
+        "course_id": 100,
+        "date": "08/05/2021",
+        "tee_time": "10:30",
+        "open_spots": 2,
+        "number_of_holes": "9",
+        "private": true,
+        "host_id": 2,
+        "invitees": [1, 3],
+        "players": [3]
+     }
+   },
+      {
+      "id": 3,
+      "type": "event",
+      "attributes": {
+        "course_id": 102,
+        "date": "08/04/2021",
+        "tee_time": "09:30",
+        "open_spots": 3,
+        "number_of_holes": "9",
+        "private": true,
+        "host_id": 3,
+        "invitees": [1, 2, 3],
+        "players": [3]
+     }
+   }
 }
 ```
 
@@ -173,7 +238,7 @@ Example Response:
       "attributes": [
         {
          "name": "Eric Rabun",
-         "friends": 1,
+         "friends": [1],
          "events": [1]
         }
        },
@@ -183,7 +248,7 @@ Example Response:
       "attributes": [
         {
          "name": "Tyson McNutt",
-         "friends": 1,
+         "friends": [1],
          "events": []
         }
        }
