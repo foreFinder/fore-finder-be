@@ -13,6 +13,14 @@ class Event < ApplicationRecord
   validates :private, inclusion: [true, false]
 
   def self.invitees
-    
+
+  end
+
+  def self.players
+
+  end
+
+  def self.calculate_open_spots
+
   end
 end
