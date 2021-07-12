@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Create Event API Endpoint' do
   describe 'happy path' do
 
+<<<<<<< HEAD
+    it 'can create a new event' do
+=======
     xit 'can create a new event' do
+>>>>>>> 5cba05af8dbbad91865360d48d58d0f2e235dd1a
 
       player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
       player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
@@ -14,7 +18,7 @@ RSpec.describe 'Create Event API Endpoint' do
         course_id: course_1.id,
         date: "08/01/2021",
         tee_time: "14:20",
-        open_spots: "2",
+        open_spots: 2,
         number_of_holes: "9",
         private: true,
         host_id: player_1.id,

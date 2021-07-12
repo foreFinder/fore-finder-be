@@ -1,24 +1,16 @@
-GET /api/v1/courses - fetch details for all courses
-<<<<<<< HEAD
-POST /api/v1/event - host creates a tee time
-GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
-POST /api/v1/player-events - accept or decline invitation
-GET /api/v1/players - fetch details for all players
+## API Endpoints
 
-### GET All courses detail ()
-=======
+Request Parameters:
 
-GET /api/v1/events - fetch details for all courses
-
-GET /api/v1/players/{player_id}/events - fetch all events for a single player
-
-POST /api/v1/events - host creates a tee time
-
-GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
-
-POST /api/v1/player-events - accept or decline invitation
-
-GET /api/v1/players - fetch details for all players
+| HTTP Verb | Path | Use Case |
+| --- | --- | --- |
+| GET | /api/v1/courses | returns all courses available for user to select from |
+| GET | /api/v1/events | returns all available events, including ability to limit to events open to community, use to populate host view |
+| POST | /api/v1/event | creates a new tee-time (event) |
+| GET | /api/v1/event/{event_id} | fetch details for a specific tee time (includes details on invites accepted) |
+| GET  | /api/v1/players | fetch details for all players |
+| GET | /api/v1/players/{player_id}/events | fetch all events for a single player |
+| POST | /api/v1/player-events | accept or decline invitation |
 
 ### GET All courses detail
 ##### Resource URL
@@ -142,7 +134,6 @@ Example Response:
         "invitees": [1, 2, 3],
         "players": [3]
      }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
    }
 }
 ```
@@ -153,6 +144,7 @@ Example Response:
 POST /api/v1/event
 ```
 Request Parameters:
+
 | Request Parameter | Description | Required? |
 | --- | --- | --- |
 | course_id | id of the course that is booked | Yes - must be sent in body of request |
@@ -193,12 +185,8 @@ Example Response:
         "private": true,
         "host_id": 1,
         "invitees": [2],
-<<<<<<< HEAD
-        "players": []     }
-=======
         "players": []
      }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
    }
 }
 ```
@@ -221,11 +209,7 @@ Example Response:
         "number_of_holes": "9",
         "private": true,
         "host_id": 1,
-<<<<<<< HEAD
         "invitees": [2, 3],
-=======
-        "invitees": [2],
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
         "players": [2]
      }
    }
@@ -238,6 +222,7 @@ Example Response:
 POST /api/v1/player-events
 ```
 Request Parameters:
+
 | Request Parameter | Description | Required? |
 | --- | --- | --- |
 | user_id | id of the user accepting tee time | Yes - must be sent in body of request |
@@ -280,22 +265,6 @@ Example Response:
       "type": "players",
       "attributes": [
         {
-<<<<<<< HEAD
-         "player_id": 1,
-         "name": "Eric Rabun'",
-         "friends": 1,
-         "events": [1]
-        },
-        {
-         "player_id": 2,
-         "name": "Tyson McNutt",
-         "friends": 1,
-         "events": []
-        }
-      ]
-   }
-}
-=======
          "name": "Eric Rabun",
          "friends": [1],
          "events": [1]
@@ -313,5 +282,3 @@ Example Response:
        }
       ]
    }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
-```
