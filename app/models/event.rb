@@ -12,8 +12,8 @@ class Event < ApplicationRecord
   validates :host_id, presence: true
   validates :private, inclusion: [true, false]
 
-  def self.invitees
-
+  def self.invitees(invitees)
+    require "pry"; binding.pry
   end
 
   def self.players

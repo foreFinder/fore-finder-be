@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApplicationController
       params[:invitees].each do |invitee|
       PlayerEvent.create!(player_id: invitee, event_id: event.id)
     end
-    invitees = Event.invitess(params[:invitees])
+    invitees = Event.invitees(params[:invitees])
   end
 end
 
