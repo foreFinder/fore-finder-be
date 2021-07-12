@@ -17,3 +17,11 @@ class Api::V1::EventsController < ApplicationController
   end
 
 end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:host_id, :course_id, :date, :tee_time, :open_spots, :number_of_holes, :private)
+  end
+
+end

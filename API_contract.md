@@ -1,27 +1,17 @@
-GET /api/v1/courses - fetch details for all courses
-<<<<<<< HEAD
-POST /api/v1/event - host creates a tee time
-GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
-POST /api/v1/player-events - accept or decline invitation
-GET /api/v1/players - fetch details for all players
+## API Endpoints
+- [x] GET /api/v1/courses - fetch all courses
 
-### GET All courses detail ()
-=======
+- [ ] GET /api/v1/events - fetch details for all courses
+- [ ] POST /api/v1/event - host creates a tee time
+- [ ] POST /api/v1GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
 
-GET /api/v1/events - fetch details for all courses
+- [ ] GET /api/v1/players - fetch details for all players
+- [ ] GET /api/v1/players/{player_id}/events - fetch all events for a single player
 
-GET /api/v1/players/{player_id}/events - fetch all events for a single player
 
-POST /api/v1/events - host creates a tee time
-
-GET /api/v1/event/{event_id} - fetch details for a specific tee time (includes details on invites accepted)
-
-POST /api/v1/player-events - accept or decline invitation
-
-GET /api/v1/players - fetch details for all players
+- [ ] POST /api/v1/player-events - accept or decline invitation
 
 ### GET All courses detail
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
 ##### Resource URL
 ```
 GET /api/v1/courses
@@ -29,51 +19,60 @@ GET /api/v1/courses
 Example Response:    
 ```json
 {
-<<<<<<< HEAD
-  "data": {
-      "id": 1,
-      "type": "courses",
-      "attributes": [{
-        "course_id": 100,
-        "name": "08/04/2021",
-        "tee_time": "09:30",
-        "open_spots": 2,
-        "number_of_holes": "9",
-        "private": true,
-        "host_id": 1,
-        "invitees": [2, 3],
-        "players": [2]
-     }
-   ]
-=======
   "data": [
-     {
-      "id": 1,
-      "type": "course",
-      "attributes": {
-         "name": "Green Valley Ranch Golf Club",
-         "street": "4900 Himalaya Road",
-         "city": "Denver",
-         "state": "Colorado",
-         "zip": "80249",
-         "phone": "303.371.3131",
-         "cost": 80
+    {
+        "id": "1",
+        "type": "course",
+        "attributes": {
+            "name": "Green Valley Ranch Golf Club",
+            "street": "4900 Himalaya Road",
+            "city": "Denver",
+            "state": "Colorado",
+            "zip_code": "80249",
+            "phone": "303.371.3131",
+            "cost": "80"
+          }
+    },
+    {
+        "id": "2",
+        "type": "course",
+        "attributes": {
+            "name": "City Park Golf Course",
+            "street": "3181 E. 23rd Avenue",
+            "city": "Denver",
+            "state": "Colorado",
+            "zip_code": "80205",
+            "phone": "720.865.3410",
+            "cost": "65"
         }
-      },
-     {
-     "id": 2,
-     "type": "course",
-     "attributes": {
-        "name": "City Park Golf Course",
-        "street": "3181 E. 23rd Avenue",
-        "city": "Denver",
-        "state": "Colorado",
-        "zip": "80205",
-        "phone": "720.865.3410",
-        "cost": 65
-      }
-     } 
-   ]
+    },
+    {
+          "id": "3",
+          "type": "course",
+          "attributes": {
+              "name": "Riverdale Golf Club",
+              "street": "13300 Riverdale Road",
+              "city": "Brighton",
+              "state": "Colorado",
+              "zip_code": "80602",
+              "phone": "303.659.4700",
+              "cost": "74"
+          }
+    },
+    {
+          "id": "4",
+          "type": "course",
+          "attributes": {
+              "name": "Willis Case Golf Course",
+              "street": "4999 Vrain Street",
+              "city": "Denver",
+              "state": "Colorado",
+              "zip_code": "80212",
+              "phone": "720.865.0700",
+              "cost": "58"
+          }
+    }
+  ]
 }
 ```
 ### GET All Events
@@ -134,7 +133,6 @@ Example Response:
         "invitees": [1, 2, 3],
         "players": [3]
      }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
    }
 }
 ```
@@ -185,12 +183,8 @@ Example Response:
         "private": true,
         "host_id": 1,
         "invitees": [2],
-<<<<<<< HEAD
-        "players": []     }
-=======
         "players": []
      }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
    }
 }
 ```
@@ -213,11 +207,7 @@ Example Response:
         "number_of_holes": "9",
         "private": true,
         "host_id": 1,
-<<<<<<< HEAD
         "invitees": [2, 3],
-=======
-        "invitees": [2],
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
         "players": [2]
      }
    }
@@ -272,22 +262,6 @@ Example Response:
       "type": "players",
       "attributes": [
         {
-<<<<<<< HEAD
-         "player_id": 1,
-         "name": "Eric Rabun'",
-         "friends": 1,
-         "events": [1]
-        },
-        {
-         "player_id": 2,
-         "name": "Tyson McNutt",
-         "friends": 1,
-         "events": []
-        }
-      ]
-   }
-}
-=======
          "name": "Eric Rabun",
          "friends": [1],
          "events": [1]
@@ -305,5 +279,3 @@ Example Response:
        }
       ]
    }
->>>>>>> d8284c62af6076b725c790724222ff3c394a6814
-```
