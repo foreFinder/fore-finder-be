@@ -1,5 +1,7 @@
 class Api::V1::EventsController < ApplicationController
   def create
+    # create a new event
+    # add invitees to player_events table
     event = Event.create!(event_params)
     invitees = []
     if event.save && params[:invitees]

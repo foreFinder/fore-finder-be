@@ -14,7 +14,7 @@ RSpec.describe 'Create Event API Endpoint' do
         course_id: course_1.id,
         date: "08/01/2021",
         tee_time: "14:20",
-        open_spots: "2",
+        open_spots: 2,
         number_of_holes: "9",
         private: true,
         host_id: player_1.id,
