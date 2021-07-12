@@ -13,7 +13,6 @@ class Event < ApplicationRecord
   validates :private, inclusion: [true, false]
 
   def self.invitees(invitees)
-    require "pry"; binding.pry
   end
 
   def self.players
