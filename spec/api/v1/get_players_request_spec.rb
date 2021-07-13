@@ -51,5 +51,14 @@ RSpec.describe "Get All Players Endpoint" do
   end
 
   describe "sad path" do
+    it 'returns empty data array if there are no players' do
+      get '/api/v1/players'
+
+      expect(response).to be_successful
+
+      all_players = JSON.parse(response.body, symbolize_names: true)
+      expect(all_players[:data]).to be_an(Array)
+      expect(all_players[:data]).to be_empty
+    end
   end
 end
