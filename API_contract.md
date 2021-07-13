@@ -258,25 +258,41 @@ GET /api/v1/players
 Example Response:    
 ```json
 {
-  "data": {
-      "id": 1,
-      "type": "players",
-      "attributes": [
-        {
-         "name": "Eric Rabun",
-         "friends": [1],
-         "events": [1]
-        }
-       },
-        {
-      "id": 2,
-      "type": "players",
-      "attributes": [
-        {
-         "name": "Tyson McNutt",
-         "friends": [1],
-         "events": []
-        }
-       }
-      ]
-   }
+  "data": [
+      {
+          "id": "1",
+          "type": "players",
+          "attributes": {
+            "name": "Eric Rabun",
+            "friends": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "events": [
+                2
+            ]
+          }
+      },
+      {
+          "id": "2",
+          "type": "players",
+          "attributes": {
+            "name": "Tyson McNutt",
+            "friends": [
+                1,
+                3,
+                4,
+                5,
+                6
+            ],
+            "events": [
+                1
+            ]
+          }
+      }
+  ]
+}
+```
