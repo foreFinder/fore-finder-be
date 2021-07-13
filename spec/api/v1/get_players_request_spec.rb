@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Get All Players Endpoint" do
   describe "happy path" do
+    it 'returns all players with friend and event details' do
     player_1 = Player.create!(name: 'Eric Rabun', phone: "999.999.1234", email: "test1@test.com")
     player_2 = Player.create!(name: 'Tyson McNutt', phone: "999.999.1235" , email: "test2@test.com")
     player_3 = Player.create!(name: 'Jon Schlandt', phone: "999.999.1236", email: "test3@test.com")
@@ -45,6 +46,7 @@ RSpec.describe "Get All Players Endpoint" do
 
       expect(player[:attributes]).to have_key(:events)
       expect(player[:attributes][:events]).to be_an(Array)
+      end
     end
   end
 

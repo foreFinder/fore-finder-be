@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "/courses", to:"courses#index"
       post "/event", to: "events#create"
+      get "/players", to: "players#index"
     end
   end
 end
