@@ -12,15 +12,17 @@ class Event < ApplicationRecord
   validates :host_id, presence: true
   validates :private, inclusion: [true, false]
 
-  def self.invitees
-    # find all players where PlayerEvents.player_id == invitees
+  def invitees
+    players.map do |player|
+      player.id
+    end
   end
 
-  def self.players
+  def players_accepted_invitation
     # PlayerEvents where invite_accepted
   end
 
-  def self.calculate_open_spots
+  def calculate_open_spots
     # open_spots - players
   end
 end
