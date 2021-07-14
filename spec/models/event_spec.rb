@@ -15,7 +15,7 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of :open_spots }
     it { should validate_presence_of :number_of_holes }
     it { should validate_presence_of :host_id }
-    it { should validate_presence_of :private }
+    it { should validate_inclusion_of(:private).in_array([true, false])}
   end
 
   describe "instance methods" do
@@ -33,6 +33,7 @@ RSpec.describe Event, type: :model do
 
     describe "#invitees" do
       it "returns an array of players that have been inviteed to the event" do
+
 
         expect(@event_1.invitees).to eq([@player_2.id, @player_3.id])
         expect(@event_2.invitees).to eq([@player_2.id])
