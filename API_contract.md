@@ -174,7 +174,7 @@ Example Response:
 ```json
 {
   "data": {
-      "id": 1,
+      "id": "1",
       "type": "event",
       "attributes": {
         "course_id": 100,

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Create Event API Endpoint' do
   describe 'happy path' do
-    xit 'can create a new event' do
+    it 'can create a new event' do
 
       player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
       player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
@@ -29,6 +29,7 @@ RSpec.describe 'Create Event API Endpoint' do
       created_event = Event.last
 
       expect(created_event.host_id).to eq(player_1.id)
+      expect(created_event.course_id).to eq(course_1.id)
 
       expect(response).to be_successful
       expect(event_data).to be_a(Hash)
@@ -60,7 +61,7 @@ RSpec.describe 'Create Event API Endpoint' do
       expect(event_data[:data][:attributes][:number_of_holes]).to be_a(String)
 
       expect(event_data[:data][:attributes]).to have_key(:private)
-      expect(event_data[:data][:attributes][:private]).to be_a(Boolean)
+      expect(event_data[:data][:attributes][:private]).to be_in([true, false])
 
       expect(event_data[:data][:attributes]).to have_key(:host_id)
       expect(event_data[:data][:attributes][:host_id]).to be_a(Integer)
@@ -72,7 +73,7 @@ RSpec.describe 'Create Event API Endpoint' do
 
   describe "sad path" do
 
-    xit 'returns an error if missing a parameter' do
+    it 'returns an error if missing a parameter' do
       player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
       player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
       player_3 = Player.create!(id: 3, name: 'player 3', phone: "999.999.1236", email: "test3@test.com")
@@ -94,9 +95,9 @@ RSpec.describe 'Create Event API Endpoint' do
 
       event_data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response).to eq(400)
+      expect(response.status).to eq(400)
       expect(event_data).to have_key(:errors)
-      expect(event_data[:errors][0][:detail]).to be_a(String)
+      expect(event_data[:errors][0][:message]).to be_a(String)
     end
   end
 end
