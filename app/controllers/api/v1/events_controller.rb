@@ -6,6 +6,7 @@ class Api::V1::EventsController < ApplicationController
         PlayerEvent.create!(player_id: invitee, event_id: event.id)
       end
     end
+    render json: EventSerializer.new(event)
   end
 
   private

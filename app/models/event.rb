@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates :open_spots, presence: true
   validates :number_of_holes, presence: true
   validates :host_id, presence: true
-  validates :private, inclusion: [true, false]
+  validates :private, presence: true
 
   def invitees
     players.map do |player|
@@ -18,8 +18,11 @@ class Event < ApplicationRecord
     end
   end
 
-  def players_accepted_invitation
-    # PlayerEvents where invite_accepted
+  def players_accepting_invitation
+    players = player_events.where("invite_accepted = ?", true)
+    players.map do |player|
+      player.player_id
+    end
   end
 
   def calculate_open_spots

@@ -60,7 +60,7 @@ RSpec.describe 'Create Event API Endpoint' do
       expect(event_data[:data][:attributes][:number_of_holes]).to be_a(String)
 
       expect(event_data[:data][:attributes]).to have_key(:private)
-      expect(event_data[:data][:attributes][:private]).to be_a(Boolean)
+      expect(event_data[:data][:attributes][:private]).to be_in([true, false])
 
       expect(event_data[:data][:attributes]).to have_key(:host_id)
       expect(event_data[:data][:attributes][:host_id]).to be_a(Integer)
