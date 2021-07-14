@@ -1,4 +1,8 @@
 class Api::V1::EventsController < ApplicationController
+
+def index
+end
+
   def create
     event = Event.create!(event_params)
     if event.save && params[:invitees]
