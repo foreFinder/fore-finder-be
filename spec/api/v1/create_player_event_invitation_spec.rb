@@ -8,6 +8,7 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
       player_3 = Player.create!(name: 'player 3', phone: "999.999.1236", email: "test3@test.com")
       course_1 = Course.create!(name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
       event_1 = Event.create!(course_id: course_1.id, date: '08-01-2021', tee_time: '13:20', open_spots: '1', number_of_holes: "9", host_id: player_2.id, private: true )
+      invitation = PlayerEvent.create!(player_id: player_1.id, event_id: event_1.id, invite_status: "pending")
 
       player_event_params = {
         player_id: player_1.id,
@@ -17,9 +18,9 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
-      expect(PlayerEvent.all.count).to eq(0)
+      expect(invitation.invite_status).to eq("accepted")
 
-      post '/api/v1/player-event', headers: headers, params:JSON.generate(player_event_params)
+      patch '/api/v1/player-event', headers: headers, params:JSON.generate(player_event_params)
 
       player_event_data = JSON.parse(response.body, symbolize_names: true)
 
@@ -56,6 +57,7 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
       player_3 = Player.create!(name: 'player 3', phone: "999.999.1236", email: "test3@test.com")
       course_1 = Course.create!(name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
       event_1 = Event.create!(course_id: course_1.id, date: '08-01-2021', tee_time: '13:20', open_spots: '1', number_of_holes: "9", host_id: player_2.id, private: true )
+      invitation = PlayerEvent.create!(player_id: player_1.id, event_id: event_1.id, invite_status: "pending")
 
       player_event_params = {
         player_id: player_1.id,
@@ -64,10 +66,8 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
       }
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
-
-      expect(PlayerEvent.all.count).to eq(0)
-
-      post '/api/v1/player-event', headers: headers, params:JSON.generate(player_event_params)
+      
+      patch '/api/v1/player-event', headers: headers, params:JSON.generate(player_event_params)
 
       player_event_data = JSON.parse(response.body, symbolize_names: true)
 
