@@ -22,10 +22,10 @@ Course.create!(id: 1, name: 'Green Valley Ranch Golf Club', street: '4900 Himala
 Course.create!(id: 2, name: 'City Park Golf Course', street: '3181 E. 23rd Avenue', city: 'Denver', state: 'Colorado', zip_code: '80205', phone: '720.865.3410', cost: 65)
 Course.create!(id: 3, name: 'Riverdale Golf Club', street: '13300 Riverdale Road', city: 'Brighton', state: 'Colorado', zip_code: '80602', phone: '303.659.4700', cost: 74)
 Course.create!(id: 4, name: 'Willis Case Golf Course', street: '4999 Vrain Street', city: 'Denver', state: 'Colorado', zip_code: '80212', phone: '720.865.0700', cost: 58)
-
-Event.create!(id: 1, course_id: 1, date: '08-01-2021', tee_time: '13:20', open_spots: '3', number_of_holes: "9", host_id: 1, private: true)
-Event.create!(id: 2, course_id: 2, date: '08-05-2021', tee_time: '14:20', open_spots: '2', number_of_holes: "18", host_id: 2, private: true)
-Event.create!(id: 3, course_id: 3, date: '08-10-2021', tee_time: '15:20', open_spots: '1', number_of_holes: "9", host_id: 3, private: false)
+# open_spots include the host in count
+Event.create!(id: 1, course_id: 1, date: '08-01-2021', tee_time: '13:20', open_spots: 3, number_of_holes: "9", host_id: 1, private: true)
+Event.create!(id: 2, course_id: 2, date: '08-05-2021', tee_time: '14:20', open_spots: 4, number_of_holes: "18", host_id: 2, private: true)
+Event.create!(id: 3, course_id: 3, date: '08-10-2021', tee_time: '15:20', open_spots: 2, number_of_holes: "9", host_id: 3, private: false)
 
 #A name friendships - only friends with other A's
 Friendship.create!(follower_id: 1, followee_id: 2)
@@ -43,10 +43,10 @@ Friendship.create!(follower_id: 5, followee_id: 6)
 
 PlayerEvent.create!(player_id: 2, event_id: 1, invite_accepted: true)
 PlayerEvent.create!(player_id: 3, event_id: 1, invite_accepted: true)
-PlayerEvent.create!(player_id: 4, event_id: 1, invite_accepted: true)
+PlayerEvent.create!(player_id: 4, event_id: 1, invite_accepted: nil)
 
 PlayerEvent.create!(player_id: 1, event_id: 2, invite_accepted: true)
 PlayerEvent.create!(player_id: 3, event_id: 2, invite_accepted: true)
 PlayerEvent.create!(player_id: 6, event_id: 2, invite_accepted: true)
 
-PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: true)
+PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: false)
