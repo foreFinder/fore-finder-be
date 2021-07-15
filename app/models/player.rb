@@ -17,7 +17,7 @@ class Player < ApplicationRecord
   end
 
   def events
-    events = player_events.where("invite_accepted = ?", true)
+    events = player_events.where(invite_status: :accepted)
     events.map do |event|
       event.event_id
     end

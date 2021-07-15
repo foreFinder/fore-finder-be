@@ -14,7 +14,7 @@ class Event < ApplicationRecord
 
   def players_accepting_invitation
     list = [host.id]
-    accepted_players = player_events.where(invite_accepted: true)
+    accepted_players = player_events.where(invite_status: :accepted)
     accepted_players.map do |accepted_players|
       list << accepted_players.player_id
     end
@@ -22,14 +22,14 @@ class Event < ApplicationRecord
   end
 
   def players_declining_invitation
-    players = player_events.where(invite_accepted: false)
+    players = player_events.where(invite_status: :declined)
     players.map do |player|
       player.player_id
     end
   end
 
   def players_pending_invitation
-    players = player_events.where(invite_accepted: nil)
+    players = player_events.where(invite_status: :pending)
     players.map do |player|
       player.player_id
     end

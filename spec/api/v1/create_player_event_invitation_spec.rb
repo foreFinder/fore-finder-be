@@ -12,7 +12,7 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
       player_event_params = {
         player_id: player_1.id,
         event_id: event_1.id,
-        invite_accepted: "accepted"
+        invite_status: "accepted"
       }
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
