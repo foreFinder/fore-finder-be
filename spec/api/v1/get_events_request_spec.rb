@@ -37,47 +37,64 @@ RSpec.describe "Get All Events Endpoint" do
       all_events = JSON.parse(response.body, symbolize_names: true)
 
       expect(all_events).to be_a(Hash)
+      expect(all_events).to have_key(:data)
       all_events[:data].each do |event|
         expect(event).to be_a(Hash)
-        expect(event).to have_key(:data)
-        expect(event[:data]).to be_a(Hash)
 
-        expect(event[:data]).to have_key(:type)
-        expect(event[:data][:type]).to be_a(String)
+        expect(event).to have_key(:type)
+        expect(event[:type]).to be_a(String)
 
-        expect(event[:data]).to have_key(:id)
-        expect(event[:data][:id]).to be_a(String)
+        expect(event).to have_key(:id)
+        expect(event[:id]).to be_a(String)
 
-        expect(event[:data]).to have_key(:attributes)
-        expect(event[:data][:attributes]).to be_a(Hash)
+        expect(event).to have_key(:attributes)
+        expect(event[:attributes]).to be_a(Hash)
 
-        expect(event[:data][:attributes]).to have_key(:course_id)
-        expect(event[:data][:attributes][:course_id]).to be_a(Integer)
+        expect(event[:attributes]).to have_key(:course_id)
+        expect(event[:attributes][:course_id]).to be_a(Integer)
 
-        expect(event[:data][:attributes]).to have_key(:date)
-        expect(event[:data][:attributes][:date]).to be_a(String)
+        expect(event[:attributes]).to have_key(:date)
+        expect(event[:attributes][:date]).to be_a(String)
 
-        expect(event[:data][:attributes]).to have_key(:tee_time)
-        expect(event[:data][:attributes][:tee_time]).to be_a(String)
+        expect(event[:attributes]).to have_key(:tee_time)
+        expect(event[:attributes][:tee_time]).to be_a(String)
 
-        expect(event[:data][:attributes]).to have_key(:open_spots)
-        expect(event[:data][:attributes][:open_spots]).to be_a(Integer)
+        expect(event[:attributes]).to have_key(:open_spots)
+        expect(event[:attributes][:open_spots]).to be_a(Integer)
 
-        expect(event[:data][:attributes]).to have_key(:number_of_holes)
-        expect(event[:data][:attributes][:number_of_holes]).to be_a(String)
+        expect(event[:attributes]).to have_key(:number_of_holes)
+        expect(event[:attributes][:number_of_holes]).to be_a(String)
 
-        expect(event[:data][:attributes]).to have_key(:private)
-        expect(event[:data][:attributes][:private]).to be_in([true, false])
+        expect(event[:attributes]).to have_key(:private)
+        expect(event[:attributes][:private]).to be_in([true, false])
 
-        expect(event[:data][:attributes]).to have_key(:host_id)
-        expect(event[:data][:attributes][:host_id]).to be_a(Integer)
+        expect(event[:attributes]).to have_key(:host_name)
+        expect(event[:attributes][:host_name]).to be_a(String)
 
-        expect(event[:data][:attributes]).to have_key(:invitees)
-        expect(event[:data][:attributes][:invitees]).to be_a(Array)
+        expect(event[:attributes]).to have_key(:accepted)
+        expect(event[:attributes][:accepted]).to be_a(Array)
+
+        expect(event[:attributes]).to have_key(:declined)
+        expect(event[:attributes][:declined]).to be_a(Array)
+
+        expect(event[:attributes]).to have_key(:pending)
+        expect(event[:attributes][:pending]).to be_a(Array)
+
+        expect(event[:attributes]).to have_key(:remaining_spots)
+        expect(event[:attributes][:remaining_spots]).to be_a(Integer)
       end
     end
   end
 
   describe "sad path" do
+    it 'returns empty data array if there are no events' do
+      get '/api/v1/events'
+
+      expect(response).to be_successful
+
+      all_players = JSON.parse(response.body, symbolize_names: true)
+      expect(all_players[:data]).to be_an(Array)
+      expect(all_players[:data]).to be_empty
+    end
   end
 end
