@@ -34,7 +34,6 @@ RSpec.describe Event, type: :model do
     describe "#invitees" do
       it "returns an array of players that have been inviteed to the event" do
 
-
         expect(@event_1.invitees).to eq([@player_2.id, @player_3.id])
         expect(@event_2.invitees).to eq([@player_2.id])
       end
@@ -45,6 +44,14 @@ RSpec.describe Event, type: :model do
 
         expect(@event_1.players_accepting_invitation).to eq([@player_2.id])
         expect(@event_2.players_accepting_invitation).to eq([@player_2.id])
+      end
+    end
+
+    describe "#host_name" do
+      it "returns the name of the player hosting the event" do
+
+        expect(@event_1.host_name).to eq(@player_1.name)
+        expect(@event_2.host_name).to eq(@player_2.name)
       end
     end
   end

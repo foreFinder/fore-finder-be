@@ -28,4 +28,8 @@ class Event < ApplicationRecord
   def calculate_open_spots
     # open_spots - players
   end
+
+  def host_name
+    host.name
+  end
 end
