@@ -79,11 +79,11 @@ Example Response:
 ### GET All Events
 ##### Resource URL
 ```
-POST /api/v1/events
+GET /api/v1/events
 ```
 Optional - add query parameter to only show public events
 ```
-POST /api/v1/events?private=false
+GET /api/v1/events?private=false
 ```
 
 Example Response:    
@@ -95,14 +95,16 @@ Example Response:
       "type": "event",
       "attributes": {
         "course_id": 100,
-        "date": "08/04/2021",
+        "date": "08-04-2021",
         "tee_time": "09:30",
         "open_spots": 1,
         "number_of_holes": "9",
         "private": true,
-        "host_id": 1,
-        "invitees": [2],
-        "players": []
+        "host_name": "Bob",
+        "accepted": [2, 3],
+        "declined": [], 
+        "pending": [1],
+        "remaining_spots": 0
      }
    },
    {
@@ -110,32 +112,18 @@ Example Response:
       "type": "event",
       "attributes": {
         "course_id": 100,
-        "date": "08/05/2021",
+        "date": "08-05-2021",
         "tee_time": "10:30",
         "open_spots": 2,
         "number_of_holes": "9",
         "private": true,
-        "host_id": 2,
-        "invitees": [1, 3],
-        "players": [3]
-     }
-   },
-      {
-      "id": 3,
-      "type": "event",
-      "attributes": {
-        "course_id": 102,
-        "date": "08/04/2021",
-        "tee_time": "09:30",
-        "open_spots": 3,
-        "number_of_holes": "9",
-        "private": true,
-        "host_id": 3,
-        "invitees": [1, 2, 3],
-        "players": [3]
+        "host_name": "Amy Jones",
+        "accepted": [2, 3],
+        "declined": [], 
+        "pending": [1],
+        "remaining_spots": 1
      }
    }
-}
 ```
 
 ### POST Host & Add Tee Time (#13, #21)
@@ -160,13 +148,13 @@ Example Request Body:
 ```json
   {
     "course_id": 100,
-    "date": "08/04/2021",
+    "date": "08-04-2021",
     "tee_time": "09:30",
     "open_spots": 1,
     "number_of_holes": "9",
     "private": true,
     "host_id": 1,
-    "invitees": [2]
+    "invitees": [2] 
   }
 ```
 
@@ -178,14 +166,16 @@ Example Response:
       "type": "event",
       "attributes": {
         "course_id": 100,
-        "date": "08/04/2021",
+        "date": "08-04-2021",
         "tee_time": "09:30",
         "open_spots": 1,
         "number_of_holes": "9",
         "private": true,
-        "host_id": 1,
-        "invitees": [2],
-        "players": []
+        "host_name": "Bob Smith",
+        "accepted": [1], # host is automatically accepted
+        "declined": [], 
+        "pending": [2],
+        "remaining_spots": 1
      }
    }
 }
@@ -199,18 +189,20 @@ Example Response:
 ```json
 {
   "data": {
-      "id": 1,
+      "id": "1",
       "type": "event",
       "attributes": {
         "course_id": 100,
-        "date": "08/04/2021",
+        "date": "08-04-2021",
         "tee_time": "09:30",
-        "open_spots": 2,
+        "open_spots": 1,
         "number_of_holes": "9",
         "private": true,
-        "host_id": 1,
-        "invitees": [2, 3],
-        "players": [2]
+        "host_name": "Bob Smith",
+        "accepted": [1], # host is automatically accepted
+        "declined": [], 
+        "pending": [2],
+        "remaining_spots": 1
      }
    }
 }
