@@ -89,41 +89,75 @@ GET /api/v1/events?private=false
 Example Response:    
 ```json
 {
-  "data": [
-  {
-      "id": 1,
-      "type": "event",
-      "attributes": {
-        "course_id": 100,
-        "date": "08-04-2021",
-        "tee_time": "09:30",
-        "open_spots": 1,
-        "number_of_holes": "9",
-        "private": true,
-        "host_name": "Bob",
-        "accepted": [2, 3],
-        "declined": [], 
-        "pending": [1],
-        "remaining_spots": 0
-     }
-   },
-   {
-      "id": 2,
-      "type": "event",
-      "attributes": {
-        "course_id": 100,
-        "date": "08-05-2021",
-        "tee_time": "10:30",
-        "open_spots": 2,
-        "number_of_holes": "9",
-        "private": true,
-        "host_name": "Amy Jones",
-        "accepted": [2, 3],
-        "declined": [], 
-        "pending": [1],
-        "remaining_spots": 1
-     }
-   }
+    "data": [
+        {
+            "id": "1",
+            "type": "event",
+            "attributes": {
+                "course_id": 1,
+                "date": "08-01-2021",
+                "tee_time": "13:20",
+                "open_spots": 3,
+                "number_of_holes": "9",
+                "private": true,
+                "host_name": "Amy",
+                "accepted": [
+                    1,
+                    2,
+                    3
+                ],
+                "declined": [],
+                "pending": [
+                    4
+                ],
+                "remaining_spots": 0
+            }
+        },
+        {
+            "id": "2",
+            "type": "event",
+            "attributes": {
+                "course_id": 2,
+                "date": "08-05-2021",
+                "tee_time": "14:20",
+                "open_spots": 4,
+                "number_of_holes": "18",
+                "private": true,
+                "host_name": "Andrew",
+                "accepted": [
+                    2,
+                    1,
+                    3,
+                    6
+                ],
+                "declined": [],
+                "pending": [],
+                "remaining_spots": 0
+            }
+        },
+        {
+            "id": "3",
+            "type": "event",
+            "attributes": {
+                "course_id": 3,
+                "date": "08-10-2021",
+                "tee_time": "15:20",
+                "open_spots": 2,
+                "number_of_holes": "9",
+                "private": false,
+                "host_name": "Amber",
+                "accepted": [
+                    3
+                ],
+                "declined": [
+                    4
+                ],
+                "pending": [],
+                "remaining_spots": 1
+            }
+        }
+    ]
+}
 ```
 
 ### POST Host & Add Tee Time (#13, #21)
@@ -138,48 +172,53 @@ Request Parameters:
 | course_id | id of the course that is booked | Yes - must be sent in body of request |
 | date | date of tee time | Yes - must be sent in body of request |
 | tee_time | tee time | Yes - must be sent in body of request |
-| open_spots | number of spots | Yes - must be sent in body of request |
+| open_spots | max number of spots (including the host) | Yes - must be sent in body of request |
 | number_of_holes | number of holes played | Yes - must be sent in body of request |
+| private | limited to friends only? | Yes - must be sent in body of request |
 | host_id | id of player initiating event | Yes - must be sent in body of request |
 | invitees | id of players invited | Yes - must be sent in body of request |
-| private | limited to friends only? | Yes - must be sent in body of request |
 
 Example Request Body:
 ```json
   {
-    "course_id": 100,
+    "course_id": 1,
     "date": "08-04-2021",
     "tee_time": "09:30",
-    "open_spots": 1,
+    "open_spots": 4,
     "number_of_holes": "9",
     "private": true,
-    "host_id": 1,
-    "invitees": [2] 
+    "host_id": 4,
+    "invitees": [6]
   }
 ```
 
 Example Response:    
 ```json
 {
-  "data": {
-      "id": "1",
-      "type": "event",
-      "attributes": {
-        "course_id": 100,
-        "date": "08-04-2021",
-        "tee_time": "09:30",
-        "open_spots": 1,
-        "number_of_holes": "9",
-        "private": true,
-        "host_name": "Bob Smith",
-        "accepted": [1], # host is automatically accepted
-        "declined": [], 
-        "pending": [2],
-        "remaining_spots": 1
-     }
-   }
+    "data": {
+        "id": "4",
+        "type": "event",
+        "attributes": {
+            "course_id": 1,
+            "date": "08-04-2021",
+            "tee_time": "09:30",
+            "open_spots": 4,
+            "number_of_holes": "9",
+            "private": true,
+            "host_name": "Betty",
+            "accepted": [
+                4
+            ],
+            "declined": [],
+            "pending": [
+                6
+            ],
+            "remaining_spots": 3
+        }
+    }
 }
 ```
+
 ### GET Tee Time ()
 ##### Resource URL
 ```
@@ -189,23 +228,27 @@ Example Response:
 ```json
 {
   "data": {
-      "id": "1",
+      "id": "2",
       "type": "event",
       "attributes": {
-        "course_id": 100,
-        "date": "08-04-2021",
-        "tee_time": "09:30",
-        "open_spots": 1,
-        "number_of_holes": "9",
-        "private": true,
-        "host_name": "Bob Smith",
-        "accepted": [1], # host is automatically accepted
-        "declined": [], 
-        "pending": [2],
-        "remaining_spots": 1
-     }
-   }
-}
+          "course_id": 2,
+          "date": "08-05-2021",
+          "tee_time": "14:20",
+          "open_spots": 4,
+          "number_of_holes": "18",
+          "private": true,
+          "host_name": "Andrew",
+          "accepted": [
+              2,
+              1,
+              3,
+              6
+          ],
+          "declined": [],
+          "pending": [],
+          "remaining_spots": 0
+      }
+  }
 ```
 
 ### POST Accept or Decline Tee Time
