@@ -10,7 +10,7 @@ Request Parameters:
 | GET | /api/v1/event/{event_id} | fetch details for a specific tee time (includes details on invites accepted) |
 | GET  | /api/v1/players | fetch details for all players |
 | GET | /api/v1/players/{player_id}/events | fetch all events for a single player |
-| POST | /api/v1/player-events | accept or decline invitation |
+| PATCH | /api/v1/player-events | accept or decline invitation |
 
 ### GET All courses detail
 ##### Resource URL
@@ -254,7 +254,7 @@ Example Response:
 ### POST Accept or Decline Tee Time
 ##### Resource URL
 ```
-POST /api/v1/player-event
+PATCH /api/v1/player-event
 ```
 Request Parameters:
 
