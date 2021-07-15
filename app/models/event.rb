@@ -10,22 +10,36 @@ class Event < ApplicationRecord
   validates :open_spots, presence: true
   validates :number_of_holes, presence: true
   validates :host_id, presence: true
-  validates :private, presence: true
-
-  def invitees
-    players.map do |player|
-      player.id
-    end
-  end
+  validates_inclusion_of :private, in: [true, false]
 
   def players_accepting_invitation
-    players = player_events.where("invite_accepted = ?", true)
+    list = [host.id]
+    accepted_players = player_events.where(invite_accepted: true)
+    accepted_players.map do |accepted_players|
+      list << accepted_players.player_id
+    end
+    list
+  end
+
+  def players_declining_invitation
+    players = player_events.where(invite_accepted: false)
     players.map do |player|
       player.player_id
     end
   end
 
-  def calculate_open_spots
-    # open_spots - players
+  def players_pending_invitation
+    players = player_events.where(invite_accepted: nil)
+    players.map do |player|
+      player.player_id
+    end
+  end
+
+  def calculate_remaining_spots
+    open_spots - (players_accepting_invitation.length)
+  end
+
+  def host_name
+    host.name
   end
 end
