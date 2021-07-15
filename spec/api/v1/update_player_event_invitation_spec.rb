@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
+RSpec.describe "Update Player Event Response (Invitation) Endpoint" do
   describe "happy path" do
     it "should add the players response to an invitation" do
       player_1 = Player.create!(name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
@@ -66,7 +66,7 @@ RSpec.describe "Create Player Event Response (Invitation) Endpoint" do
       }
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
-      
+
       patch '/api/v1/player-event', headers: headers, params:JSON.generate(player_event_params)
 
       player_event_data = JSON.parse(response.body, symbolize_names: true)
