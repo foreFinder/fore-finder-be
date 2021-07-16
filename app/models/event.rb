@@ -42,4 +42,8 @@ class Event < ApplicationRecord
   def host_name
     host.name
   end
+
+  def course_name
+    course.name
+  end
 end

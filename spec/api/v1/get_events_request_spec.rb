@@ -50,8 +50,8 @@ RSpec.describe "Get All Events Endpoint" do
         expect(event).to have_key(:attributes)
         expect(event[:attributes]).to be_a(Hash)
 
-        expect(event[:attributes]).to have_key(:course_id)
-        expect(event[:attributes][:course_id]).to be_a(Integer)
+        expect(event[:attributes]).to have_key(:course_name)
+        expect(event[:attributes][:course_name]).to be_a(String)
 
         expect(event[:attributes]).to have_key(:date)
         expect(event[:attributes][:date]).to be_a(String)
