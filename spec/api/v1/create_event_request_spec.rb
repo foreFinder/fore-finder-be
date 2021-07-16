@@ -46,8 +46,8 @@ RSpec.describe 'Create Event API Endpoint' do
       expect(event_data[:data]).to have_key(:attributes)
       expect(event_data[:data][:attributes]).to be_a(Hash)
 
-      expect(event_data[:data][:attributes]).to have_key(:course_id)
-      expect(event_data[:data][:attributes][:course_id]).to be_a(Integer)
+      expect(event_data[:data][:attributes]).to have_key(:course_name)
+      expect(event_data[:data][:attributes][:course_name]).to be_a(String)
 
       expect(event_data[:data][:attributes]).to have_key(:date)
       expect(event_data[:data][:attributes][:date]).to be_a(String)

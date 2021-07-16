@@ -74,5 +74,13 @@ RSpec.describe Event, type: :model do
         expect(@event_2.host_name).to eq(@player_2.name)
       end
     end
+
+    describe "#course_name" do
+      it "returns the name of the player hosting the event" do
+
+        expect(@event_1.course_name).to eq(@course_1.name)
+        expect(@event_2.course_name).to eq(@course_1.name)
+      end
+    end
   end
 end
