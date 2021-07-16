@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::RoutingError, with: -> { render_404 }
 
   def handle_parameter_missing(exception)
-    render json: { errors: [ { "code": 400, "message": exception.record.errors }]}, status: :bad_request
+    render json: { errors: [ { "code": 400, "message": exception.message }]}, status: :bad_request
   end
 
   def render_not_found_response(exception)
