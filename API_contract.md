@@ -219,7 +219,7 @@ Example Response:
 }
 ```
 
-### GET Tee Time ()
+### GET Single Event
 ##### Resource URL
 ```
 GET /api/v1/event/{event_id}
@@ -227,28 +227,30 @@ GET /api/v1/event/{event_id}
 Example Response:    
 ```json
 {
-  "data": {
-      "id": "2",
-      "type": "event",
-      "attributes": {
-          "course_id": 2,
-          "date": "08-05-2021",
-          "tee_time": "14:20",
-          "open_spots": 4,
-          "number_of_holes": "18",
-          "private": true,
-          "host_name": "Andrew",
-          "accepted": [
-              2,
-              1,
-              3,
-              6
-          ],
-          "declined": [],
-          "pending": [],
-          "remaining_spots": 0
-      }
-  }
+    "data": {
+        "id": "1",
+        "type": "event",
+        "attributes": {
+            "course_name": "Green Valley Ranch Golf Club",
+            "date": "08-01-2021",
+            "tee_time": "13:20",
+            "open_spots": 3,
+            "number_of_holes": "9",
+            "private": true,
+            "host_name": "Amy",
+            "accepted": [
+                1,
+                2,
+                3
+            ],
+            "declined": [],
+            "pending": [
+                4
+            ],
+            "remaining_spots": 0
+        }
+    }
+}
 ```
 
 ### POST Accept or Decline Tee Time
