@@ -10,7 +10,8 @@ RSpec.describe "Update Player Event Response (Invitation) Endpoint" do
       event_1 = Event.create!(course_id: course_1.id, date: '08-01-2021', tee_time: '13:20', open_spots: '1', number_of_holes: "9", host_id: player_2.id, private: true )
       invitation = PlayerEvent.create!(player_id: player_1.id, event_id: event_1.id, invite_status: "pending")
 
-      player_event_params = {
+      player_event_params =
+      {
         player_id: player_1.id,
         event_id: event_1.id,
         invite_status: "accepted"
