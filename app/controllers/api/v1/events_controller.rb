@@ -5,6 +5,11 @@ class Api::V1::EventsController < ApplicationController
     render json: EventSerializer.new(events)
   end
 
+  def show
+    event = Event.find(params[:id])
+    render json: EventSerializer.new(event)
+  end
+
   def create
     event = Event.create!(event_params)
     if event.save && params[:invitees]
