@@ -103,11 +103,14 @@ RSpec.describe 'Create Event API Endpoint' do
 
       post '/api/v1/event', headers: headers, params:JSON.generate(event_params)
 
-      event_data = JSON.parse(response.body, symbolize_names: true)
-
       expect(response.status).to eq(400)
-      expect(event_data).to have_key(:errors)
-      expect(event_data[:errors][0][:message]).to be_a(String)
+      event = JSON.parse(response.body, symbolize_names: true)
+      expect(event).to have_key(:errors)
+      expect(event).to_not have_key(:data)
+      expect(event[:errors][0]).to have_key(:message)
+      expect(event[:errors][0][:message]).to be_a(String)
+      expect(event[:errors][0]).to have_key(:code)
+      expect(event[:errors][0][:code]).to be_a(Integer)
     end
   end
 end
