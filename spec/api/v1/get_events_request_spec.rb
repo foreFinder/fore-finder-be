@@ -19,16 +19,16 @@ RSpec.describe "Get All Events Endpoint" do
       event_3 = Event.create!(id: 3, course_id: 3, date: '08/10/2021', tee_time: '15:20', open_spots: '3', number_of_holes: "9", host_id: 3, private: false )
 
       # event 1 has 1 spot open
-      PlayerEvent.create!(player_id: 2, event_id: 1, invite_accepted: nil)
-      PlayerEvent.create!(player_id: 3, event_id: 1, invite_accepted: true)
-      PlayerEvent.create!(player_id: 4, event_id: 1, invite_accepted: false)
+      PlayerEvent.create!(player_id: 2, event_id: 1, invite_status: "pending")
+      PlayerEvent.create!(player_id: 3, event_id: 1, invite_status: "accepted")
+      PlayerEvent.create!(player_id: 4, event_id: 1, invite_status: "declined")
       # event 2 has 2 spots open
-      PlayerEvent.create!(player_id: 1, event_id: 2, invite_accepted: true)
-      PlayerEvent.create!(player_id: 3, event_id: 2, invite_accepted: nil)
-      PlayerEvent.create!(player_id: 6, event_id: 2, invite_accepted: nil)
+      PlayerEvent.create!(player_id: 1, event_id: 2, invite_status: "accepted")
+      PlayerEvent.create!(player_id: 3, event_id: 2, invite_status: "pending")
+      PlayerEvent.create!(player_id: 6, event_id: 2, invite_status: "pending")
       #event 3 has 3 spots open
-      PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: true)
-      PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: false)
+      PlayerEvent.create!(player_id: 4, event_id: 3, invite_status: "accepted")
+      PlayerEvent.create!(player_id: 4, event_id: 3, invite_status: "declined")
 
       get '/api/v1/events'
 

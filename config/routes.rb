@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get "/events", to: "events#index"
       post "/event", to: "events#create"
       get "/players", to: "players#index"
+      patch "/player-event", to: "player_events#update"
     end
   end
 end

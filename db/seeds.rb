@@ -11,12 +11,12 @@ PlayerEvent.destroy_all
 Event.destroy_all
 Player.destroy_all
 
-Player.create!(id: 1, name: 'Amy', phone: "999.999.1234", email: "test1@test.com")
-Player.create!(id: 2, name: 'Andrew', phone: "999.999.1235" , email: "test2@test.com")
-Player.create!(id: 3, name: 'Amber', phone: "999.999.1236", email: "test3@test.com")
-Player.create!(id: 4, name: 'Betty', phone: "999.999.1237", email: "test4@test.com")
-Player.create!(id: 5, name: 'Burt', phone: "999.999.1238" , email: "test5@test.com")
-Player.create!(id: 6, name: "Cleo", phone: "999.999.1239" , email: "test6@test.com")
+Player.create!(id: 1, name: 'Amy', phone: "2533597214", email: "jaharamclark@gmail.com")
+Player.create!(id: 2, name: 'Andrew', phone: "3197952720" , email: "keegan.oshea9@gmail.com")
+Player.create!(id: 3, name: 'Amber', phone: "9999991236", email: "test3@test.com")
+Player.create!(id: 4, name: 'Betty', phone: "9999991237", email: "test4@test.com")
+Player.create!(id: 5, name: 'Burt', phone: "9999991238" , email: "test5@test.com")
+Player.create!(id: 6, name: "Cleo", phone: "9999991239" , email: "test6@test.com")
 
 Course.create!(id: 1, name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
 Course.create!(id: 2, name: 'City Park Golf Course', street: '3181 E. 23rd Avenue', city: 'Denver', state: 'Colorado', zip_code: '80205', phone: '720.865.3410', cost: 65)
@@ -41,12 +41,12 @@ Friendship.create!(follower_id: 5, followee_id: 4)
 Friendship.create!(follower_id: 5, followee_id: 6)
 
 
-PlayerEvent.create!(player_id: 2, event_id: 1, invite_accepted: true)
-PlayerEvent.create!(player_id: 3, event_id: 1, invite_accepted: true)
-PlayerEvent.create!(player_id: 4, event_id: 1, invite_accepted: nil)
+PlayerEvent.create!(player_id: 2, event_id: 1, invite_status: "accepted")
+PlayerEvent.create!(player_id: 3, event_id: 1, invite_status: "accepted")
+PlayerEvent.create!(player_id: 4, event_id: 1, invite_status: "pending")
 
-PlayerEvent.create!(player_id: 1, event_id: 2, invite_accepted: true)
-PlayerEvent.create!(player_id: 3, event_id: 2, invite_accepted: true)
-PlayerEvent.create!(player_id: 6, event_id: 2, invite_accepted: true)
+PlayerEvent.create!(player_id: 1, event_id: 2, invite_status: "pending")
+PlayerEvent.create!(player_id: 3, event_id: 2, invite_status: "pending")
+PlayerEvent.create!(player_id: 6, event_id: 2, invite_status: "accepted")
 
-PlayerEvent.create!(player_id: 4, event_id: 3, invite_accepted: false)
+PlayerEvent.create!(player_id: 4, event_id: 3, invite_status: "declined")
