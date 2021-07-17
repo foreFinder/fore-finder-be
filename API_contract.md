@@ -160,6 +160,65 @@ Example Response:
 }
 ```
 
+### GET All Events for Single Player
+##### Resource URL
+```
+GET /api/v1/players/{player_id}/events
+```
+Example Response:    
+```json
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "event",
+            "attributes": {
+                "course_name": "Green Valley Ranch Golf Club",
+                "date": "08-01-2021",
+                "tee_time": "13:20",
+                "open_spots": 3,
+                "number_of_holes": "9",
+                "private": true,
+                "host_name": "Amy",
+                "accepted": [
+                    1,
+                    3
+                ],
+                "declined": [
+                    2,
+                    4
+                ],
+                "pending": [],
+                "remaining_spots": 1
+            }
+        },
+        {
+            "id": "2",
+            "type": "event",
+            "attributes": {
+                "course_name": "City Park Golf Course",
+                "date": "08-05-2021",
+                "tee_time": "14:20",
+                "open_spots": 4,
+                "number_of_holes": "18",
+                "private": true,
+                "host_name": "Andrew",
+                "accepted": [
+                    2,
+                    1,
+                    6
+                ],
+                "declined": [],
+                "pending": [
+                    3
+                ],
+                "remaining_spots": 1
+            }
+        }
+    ]
+}
+```
+
 ### POST Host & Add Tee Time (#13, #21)
 ##### Resource URL
 ```
