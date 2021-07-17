@@ -1,6 +1,6 @@
 class PlayerEvent < ApplicationRecord
-  belongs_to :player
   belongs_to :event
+  belongs_to :player
 
   enum invite_status: {
     pending: 0,

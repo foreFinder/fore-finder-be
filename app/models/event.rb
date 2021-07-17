@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :course
   belongs_to :host, class_name: "Player", foreign_key: :host_id
-  has_many :player_events
+  has_many :player_events, dependent: :destroy
   has_many :players, through: :player_events
 
   validates :course_id, presence: true
