@@ -85,7 +85,7 @@ RSpec.describe "Get Single Event Endpoint" do
   end
 
   describe "sad path" do
-    it 'returns empty data array if no event matches' do
+    it 'returns error array if no event matches' do
       get '/api/v1/event/99'
 
       expect(response.status).to eq(404)

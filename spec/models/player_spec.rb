@@ -28,21 +28,21 @@ RSpec.describe Player, type: :model do
       PlayerEvent.create!(player_id: @player_3.id, event_id: @event_1.id , invite_status: "declined")
     end
 
-    describe "#friends" do
+    describe "#friends_list" do
       it "returns an array of the players friends" do
 
-        expect(@player_1.friends).to eq([@player_2.id, @player_3.id])
-        expect(@player_2.friends).to eq([@player_1.id])
-        expect(@player_3.friends).to eq([])
+        expect(@player_1.friends_list).to eq([@player_2.id, @player_3.id])
+        expect(@player_2.friends_list).to eq([@player_1.id])
+        expect(@player_3.friends_list).to eq([])
       end
     end
 
-    describe "#events" do
+    describe "#events_list" do
       it "returns an array of the events the player has accepted" do
 
-        expect(@player_1.events).to eq([])
-        expect(@player_2.events).to eq([@event_1.id, @event_2.id])
-        expect(@player_3.events).to eq([])
+        expect(@player_1.events_list).to eq([])
+        expect(@player_2.events_list).to eq([@event_1.id, @event_2.id])
+        expect(@player_3.events_list).to eq([])
       end
     end
   end

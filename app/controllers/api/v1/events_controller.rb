@@ -2,7 +2,12 @@ class Api::V1::EventsController < ApplicationController
 
   def index
     events = Event.all
-    render json: EventSerializer.new(events)
+    if params[:player_id]
+      player = Player.find(params[:player_id])
+      render json: EventSerializer.new(player.events)
+    else
+      render json: EventSerializer.new(events)
+    end
   end
 
   def show
@@ -25,4 +30,5 @@ class Api::V1::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:host_id, :course_id, :date, :tee_time, :open_spots, :number_of_holes, :private)
   end
+
 end
