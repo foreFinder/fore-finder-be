@@ -121,7 +121,6 @@ RSpec.describe "Get Single Player's Events Endpoint" do
       get "/api/v1/players/99/events"
 
       expect(response.status).to eq(404)
-      require "pry"; binding.pry
 
       event = JSON.parse(response.body, symbolize_names: true)
       expect(event).to have_key(:errors)
