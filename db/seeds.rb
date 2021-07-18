@@ -40,13 +40,13 @@ Friendship.create!(follower_id: 4, followee_id: 6)
 Friendship.create!(follower_id: 5, followee_id: 4)
 Friendship.create!(follower_id: 5, followee_id: 6)
 
-
+PlayerEvent.create!(player_id: 1, event_id: 1, invite_status: "accepted")
 PlayerEvent.create!(player_id: 2, event_id: 1, invite_status: "accepted")
-PlayerEvent.create!(player_id: 3, event_id: 1, invite_status: "accepted")
-PlayerEvent.create!(player_id: 4, event_id: 1, invite_status: "pending")
+PlayerEvent.create!(player_id: 3, event_id: 1, invite_status: "declined")
 
 PlayerEvent.create!(player_id: 1, event_id: 2, invite_status: "pending")
+PlayerEvent.create!(player_id: 2, event_id: 2, invite_status: "accepted")
 PlayerEvent.create!(player_id: 3, event_id: 2, invite_status: "pending")
-PlayerEvent.create!(player_id: 6, event_id: 2, invite_status: "accepted")
+PlayerEvent.create!(player_id: 6, event_id: 2, invite_status: "declined")
 
-PlayerEvent.create!(player_id: 4, event_id: 3, invite_status: "declined")
+PlayerEvent.create!(player_id: 3, event_id: 3, invite_status: "accepted")

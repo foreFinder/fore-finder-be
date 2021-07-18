@@ -13,12 +13,10 @@ class Event < ApplicationRecord
   validates_inclusion_of :private, in: [true, false]
 
   def players_accepting_invitation
-    list = [host.id]
     accepted_players = player_events.where(invite_status: :accepted)
-    accepted_players.map do |accepted_players|
-      list << accepted_players.player_id
+    accepted_players.map do |accepted_player|
+      accepted_player.player_id
     end
-    list
   end
 
   def players_declining_invitation

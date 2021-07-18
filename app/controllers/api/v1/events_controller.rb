@@ -17,12 +17,18 @@ class Api::V1::EventsController < ApplicationController
 
   def create
     event = Event.create!(event_params)
-    if event.save && params[:invitees]
+    if params[:private] == false && event.save
+      invite_list = Player.where.not(id: params[:host_id])
+      invite_list.each do |invitee|
+        PlayerEvent.create!(player_id: invitee.id, event_id: event.id)
+      end
+    elsif params[:private] == true && event.save
       params[:invitees].each do |invitee|
         PlayerEvent.create!(player_id: invitee, event_id: event.id)
       end
-      render json: EventSerializer.new(event)
     end
+    PlayerEvent.create!(player_id: params[:host_id], event_id: event.id, invite_status: :accepted)
+    render json: EventSerializer.new(event)
   end
 
   def destroy
@@ -34,5 +40,4 @@ class Api::V1::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:host_id, :course_id, :date, :tee_time, :open_spots, :number_of_holes, :private)
   end
-
 end
