@@ -395,9 +395,6 @@ Example Response:
   ]
 }
 ```
-
-
-
 ### POST Add Friendship
 ##### Resource URL
 ```
@@ -445,4 +442,25 @@ Example Response:
         }
     }
 }
+```
+
+### DELETE Remove Friendship
+##### Resource URL
+```
+DELETE /api/v1/friendship
+```
+Request Parameters:
+
+| Request Parameter | Description | Required? |
+| --- | --- | --- |
+| follower_id | id of player removing friend | Yes - must be sent in body of request |
+| followee_id | id of player being removed | Yes - must be sent in body of request |
+
+
+Example Request Body:
+```json
+  {
+    "follower_id": 3,
+    "followee_id": 6
+  }
 ```
