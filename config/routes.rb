@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get "/players", to: "players#index"
       patch "/player-event", to: "player_events#update"
       get "/players/:player_id/events", to: "events#index"
+      post "/friendship", to: "friendships#create"
     end
   end
 end
