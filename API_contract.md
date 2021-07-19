@@ -11,6 +11,7 @@ Request Parameters:
 | GET  | /api/v1/players | fetch details for all players |
 | GET | /api/v1/players/{player_id}/events | fetch all events for a single player |
 | PATCH | /api/v1/player-events | accept or decline invitation |
+| POST | /api/v1/friendship | add a friend |
 
 ### GET All courses detail
 ##### Resource URL
@@ -392,5 +393,56 @@ Example Response:
           }
       }
   ]
+}
+```
+
+
+
+### POST Add Friendship
+##### Resource URL
+```
+POST /api/v1/friendship
+```
+Request Parameters:
+
+| Request Parameter | Description | Required? |
+| --- | --- | --- |
+| follower_id | id of player adding friend | Yes - must be sent in body of request |
+| followee_id | id of player being friended | Yes - must be sent in body of request |
+
+
+Example Request Body:
+```json
+  {
+    "follower_id": 3,
+    "followee_id": 6
+  }
+```
+
+Example Response:    
+```json
+{
+    "data": {
+        "id": "15",
+        "type": "friendship",
+        "attributes": {
+            "follower": {
+                "id": 3,
+                "name": "Amber",
+                "phone": "9999991236",
+                "email": "test3@test.com",
+                "created_at": "2021-07-18T02:50:05.802Z",
+                "updated_at": "2021-07-18T02:50:05.802Z"
+            },
+            "followee": {
+                "id": 6,
+                "name": "Cleo",
+                "phone": "9999991239",
+                "email": "test6@test.com",
+                "created_at": "2021-07-18T02:50:05.807Z",
+                "updated_at": "2021-07-18T02:50:05.807Z"
+            }
+        }
+    }
 }
 ```
