@@ -30,7 +30,6 @@ RSpec.describe Player, type: :model do
 
     describe "#friends_list" do
       it "returns an array of the players friends" do
-
         expect(@player_1.friends_list).to eq([@player_2.id, @player_3.id])
         expect(@player_2.friends_list).to eq([@player_1.id])
         expect(@player_3.friends_list).to eq([])

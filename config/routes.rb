@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       patch "/player-event", to: "player_events#update"
       get "/players/:player_id/events", to: "events#index"
       post "/friendship", to: "friendships#create"
+      delete "/friendship", to: "friendships#destroy"
     end
   end
 end
