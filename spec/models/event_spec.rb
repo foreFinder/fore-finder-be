@@ -27,9 +27,11 @@ RSpec.describe Event, type: :model do
       @course_1 = Course.create!(name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
       @event_1 = Event.create!(course_id: @course_1.id, date: '08/01/2021', tee_time: '13:20', open_spots: 3, number_of_holes: "9", host_id: @player_1.id, private: true)
       @event_2 = Event.create!(course_id: @course_1.id, date: '09/01/2021', tee_time: '14:20', open_spots: 2, number_of_holes: "18", host_id: @player_2.id, private: true)
+      PlayerEvent.create!(player_id: @player_1.id, event_id: @event_1.id , invite_status: "accepted")
       PlayerEvent.create!(player_id: @player_2.id, event_id: @event_1.id , invite_status: "accepted")
       PlayerEvent.create!(player_id: @player_3.id, event_id: @event_1.id , invite_status: "pending")
 
+      PlayerEvent.create!(player_id: @player_2.id, event_id: @event_2.id , invite_status: "accepted")
       PlayerEvent.create!(player_id: @player_1.id, event_id: @event_2.id , invite_status: "pending")
       PlayerEvent.create!(player_id: @player_3.id, event_id: @event_2.id , invite_status: "declined")
       PlayerEvent.create!(player_id: @player_4.id, event_id: @event_2.id , invite_status: "accepted")

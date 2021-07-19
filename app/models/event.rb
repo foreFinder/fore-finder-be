@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :course
   belongs_to :host, class_name: "Player", foreign_key: :host_id
-  has_many :player_events
+  has_many :player_events, dependent: :destroy
   has_many :players, through: :player_events
 
   validates :course_id, presence: true
@@ -13,12 +13,10 @@ class Event < ApplicationRecord
   validates_inclusion_of :private, in: [true, false]
 
   def players_accepting_invitation
-    list = [host.id]
     accepted_players = player_events.where(invite_status: :accepted)
-    accepted_players.map do |accepted_players|
-      list << accepted_players.player_id
+    accepted_players.map do |accepted_player|
+      accepted_player.player_id
     end
-    list
   end
 
   def players_declining_invitation
