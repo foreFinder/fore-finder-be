@@ -30,6 +30,7 @@ gem 'fast_jsonapi'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem 'twilio-ruby', '~> 5.57.0'
 
 group :development, :test do
   gem 'simplecov', require: false, group: :test

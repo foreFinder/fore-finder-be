@@ -1,5 +1,4 @@
 class EventsFacade
-  def self.add_invitees(params)
 
-  end
+  def send_sms()
 end
