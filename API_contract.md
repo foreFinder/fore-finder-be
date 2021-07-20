@@ -95,65 +95,77 @@ Example Response:
             "id": "1",
             "type": "event",
             "attributes": {
-                "course_id": 1,
+                "course_name": "Green Valley Ranch Golf Club",
                 "date": "08-01-2021",
                 "tee_time": "13:20",
                 "open_spots": 3,
                 "number_of_holes": "9",
                 "private": true,
                 "host_name": "Amy",
+                "host_id": 1,
                 "accepted": [
-                    1,
-                    2,
-                    3
+                    1
                 ],
                 "declined": [],
                 "pending": [
-                    4
+                    2,
+                    3
                 ],
-                "remaining_spots": 0
+                "closed": [],
+                "remaining_spots": 2
             }
         },
         {
             "id": "2",
             "type": "event",
             "attributes": {
-                "course_id": 2,
+                "course_name": "City Park Golf Course",
                 "date": "08-05-2021",
                 "tee_time": "14:20",
                 "open_spots": 4,
                 "number_of_holes": "18",
                 "private": true,
                 "host_name": "Andrew",
+                "host_id": 2,
                 "accepted": [
-                    2,
-                    1,
-                    3,
-                    6
+                    2
                 ],
                 "declined": [],
-                "pending": [],
-                "remaining_spots": 0
+                "pending": [
+                    1,
+                    3,
+                    6,
+                    5
+                ],
+                "closed": [],
+                "remaining_spots": 3
             }
         },
         {
             "id": "3",
             "type": "event",
             "attributes": {
-                "course_id": 3,
+                "course_name": "Riverdale Golf Club",
                 "date": "08-10-2021",
                 "tee_time": "15:20",
                 "open_spots": 2,
                 "number_of_holes": "9",
                 "private": false,
                 "host_name": "Amber",
+                "host_id": 3,
                 "accepted": [
                     3
                 ],
                 "declined": [
-                    4
+                    6
                 ],
-                "pending": [],
+                "pending": [
+                    1,
+                    2,
+                    4,
+                    5
+                ],
+                "closed": [],
                 "remaining_spots": 1
             }
         }
@@ -171,29 +183,6 @@ Example Response:
 {
     "data": [
         {
-            "id": "1",
-            "type": "event",
-            "attributes": {
-                "course_name": "Green Valley Ranch Golf Club",
-                "date": "08-01-2021",
-                "tee_time": "13:20",
-                "open_spots": 3,
-                "number_of_holes": "9",
-                "private": true,
-                "host_name": "Amy",
-                "accepted": [
-                    1,
-                    3
-                ],
-                "declined": [
-                    2,
-                    4
-                ],
-                "pending": [],
-                "remaining_spots": 1
-            }
-        },
-        {
             "id": "2",
             "type": "event",
             "attributes": {
@@ -204,15 +193,46 @@ Example Response:
                 "number_of_holes": "18",
                 "private": true,
                 "host_name": "Andrew",
+                "host_id": 2,
                 "accepted": [
-                    2,
-                    1,
-                    6
+                    2
                 ],
                 "declined": [],
                 "pending": [
+                    1,
+                    3,
+                    6,
+                    5
+                ],
+                "closed": [],
+                "remaining_spots": 3
+            }
+        },
+        {
+            "id": "3",
+            "type": "event",
+            "attributes": {
+                "course_name": "Riverdale Golf Club",
+                "date": "08-10-2021",
+                "tee_time": "15:20",
+                "open_spots": 2,
+                "number_of_holes": "9",
+                "private": false,
+                "host_name": "Amber",
+                "host_id": 3,
+                "accepted": [
                     3
                 ],
+                "declined": [
+                    6
+                ],
+                "pending": [
+                    1,
+                    2,
+                    4,
+                    5
+                ],
+                "closed": [],
                 "remaining_spots": 1
             }
         }
@@ -240,40 +260,42 @@ Request Parameters:
 
 Example Request Body:
 ```json
-  {
-    "course_id": 1,
-    "date": "08-04-2021",
-    "tee_time": "09:30",
-    "open_spots": 4,
-    "number_of_holes": "9",
-    "private": true,
-    "host_id": 4,
-    "invitees": [6]
-  }
+{
+  "course_id": 4,
+  "date": "09-01-2021",
+  "tee_time": "10:30",
+  "open_spots": 2,
+  "number_of_holes": "18",
+  "private": true,
+  "host_id": 4,
+  "invitees": [1]
+}
 ```
 
 Example Response:    
 ```json
 {
     "data": {
-        "id": "4",
+        "id": "6",
         "type": "event",
         "attributes": {
-            "course_id": 1,
-            "date": "08-04-2021",
-            "tee_time": "09:30",
-            "open_spots": 4,
-            "number_of_holes": "9",
+            "course_name": "Willis Case Golf Course",
+            "date": "09-01-2021",
+            "tee_time": "10:30",
+            "open_spots": 2,
+            "number_of_holes": "18",
             "private": true,
             "host_name": "Betty",
+            "host_id": 4,
             "accepted": [
                 4
             ],
             "declined": [],
             "pending": [
-                6
+                1
             ],
-            "remaining_spots": 3
+            "closed": [],
+            "remaining_spots": 1
         }
     }
 }
@@ -288,29 +310,35 @@ Example Response:
 ```json
 {
     "data": {
-        "id": "1",
+        "id": "6",
         "type": "event",
         "attributes": {
-            "course_name": "Green Valley Ranch Golf Club",
-            "date": "08-01-2021",
-            "tee_time": "13:20",
-            "open_spots": 3,
-            "number_of_holes": "9",
+            "course_name": "Willis Case Golf Course",
+            "date": "09-01-2021",
+            "tee_time": "10:30",
+            "open_spots": 2,
+            "number_of_holes": "18",
             "private": true,
-            "host_name": "Amy",
+            "host_name": "Betty",
+            "host_id": 4,
             "accepted": [
-                1,
-                2,
-                3
+                4
             ],
             "declined": [],
             "pending": [
-                4
+                1
             ],
-            "remaining_spots": 0
+            "closed": [],
+            "remaining_spots": 1
         }
     }
 }
+```
+
+### DELETE Single Event
+##### Resource URL
+```
+DELETE /api/v1/event/{event_id}
 ```
 
 ### POST Accept or Decline Tee Time
