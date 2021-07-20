@@ -25,11 +25,20 @@ RSpec.describe PlayerEvent, type: :model do
         pe_4 = PlayerEvent.create!(player_id: player_4.id, event_id: event_1.id , invite_status: "pending")
         pe_5 = PlayerEvent.create!(player_id: player_5.id, event_id: event_1.id , invite_status: "accepted")
 
-        PlayerEvent.close_invitations(pe_3)
+        PlayerEvent.close_or_open_invitations(pe_3)
         expect(PlayerEvent.find_by!(player_id: player_3.id, event_id: event_1.id).invite_status).to eq("accepted")
         expect(PlayerEvent.find_by!(player_id: player_2.id, event_id: event_1.id).invite_status).to eq("closed")
         expect(PlayerEvent.find_by!(player_id: player_4.id, event_id: event_1.id).invite_status).to eq("closed")
         expect(PlayerEvent.find_by!(player_id: player_5.id, event_id: event_1.id).invite_status).to eq("accepted")
+
+        pe_5.update(player_id: player_5.id, event_id: event_1.id , invite_status: "declined")
+        PlayerEvent.close_or_open_invitations(pe_5)
+
+        expect(PlayerEvent.find_by!(player_id: player_3.id, event_id: event_1.id).invite_status).to eq("accepted")
+        expect(PlayerEvent.find_by!(player_id: player_2.id, event_id: event_1.id).invite_status).to eq("pending")
+        expect(PlayerEvent.find_by!(player_id: player_4.id, event_id: event_1.id).invite_status).to eq("pending")
+        expect(PlayerEvent.find_by!(player_id: player_5.id, event_id: event_1.id).invite_status).to eq("declined")
+
       end
     end
   end
