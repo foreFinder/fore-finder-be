@@ -1,11 +1,15 @@
 class Api::V1::EventsController < ApplicationController
 
   def index
-    events = Event.all
-    if params[:player_id]
+    if params[:private] == "false"
+      public_events = Event.all.where(private: :false)
+      render json: EventSerializer.new(public_events)
+    elsif params[:player_id]
+      events = Event.all
       player = Player.find(params[:player_id])
       render json: EventSerializer.new(player.events)
     else
+      events = Event.all
       render json: EventSerializer.new(events)
     end
   end
