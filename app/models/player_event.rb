@@ -13,9 +13,9 @@ class PlayerEvent < ApplicationRecord
     event = Event.find(invite[:event_id])
     invitations = all.where(event_id: event)
     if event.calculate_remaining_spots == 0
-      invitations.map do |invite|
+      invitations.each do |invite|
         if invite.invite_status == "pending"
-          invite.invite_status = "closed"
+          invite.update(invite_status: "closed")
         end
       end
     end

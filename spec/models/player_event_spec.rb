@@ -29,7 +29,7 @@ RSpec.describe PlayerEvent, type: :model do
         expect(PlayerEvent.find_by!(player_id: player_3.id, event_id: event_1.id).invite_status).to eq("accepted")
         expect(PlayerEvent.find_by!(player_id: player_2.id, event_id: event_1.id).invite_status).to eq("closed")
         expect(PlayerEvent.find_by!(player_id: player_4.id, event_id: event_1.id).invite_status).to eq("closed")
-        expect(PlayerEvent.find_by!(player_id: player_5.id, event_id: event_1.id).invite_status).to eq("closed")
+        expect(PlayerEvent.find_by!(player_id: player_5.id, event_id: event_1.id).invite_status).to eq("accepted")
       end
     end
   end

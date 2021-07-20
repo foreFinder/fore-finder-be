@@ -33,6 +33,13 @@ class Event < ApplicationRecord
     end
   end
 
+  def players_closed_invitation
+    players = player_events.where(invite_status: :closed)
+    players.map do |player|
+      player.player_id
+    end
+  end
+
   def calculate_remaining_spots
     open_spots - (players_accepting_invitation.length)
   end
