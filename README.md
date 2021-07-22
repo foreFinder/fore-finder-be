@@ -1,6 +1,5 @@
 # Fore Finder API
-> Backend application for [ForeFinder](https://forefinder.herokuapp.com/dashboard)
-> ForeFinder is a mobile-focused web application that makes linking up with others for a round of golf easier. Coordination can sometimes be a difficult task when filling spots for a tee time, but ForeFinder provides the tools to make that task a hole in one. Add friends to your ForeFinder network to create a private tee time invitation, or send out an invite to the entire ForeFinder community to get your slots filled ASAP!
+> Backend application for [ForeFinder](https://forefinder.herokuapp.com/dashboard) a mobile-focused web application that makes linking up with others for a round of golf easier. Coordination can sometimes be a difficult task when filling spots for a tee time, but ForeFinder provides the tools to make that task a hole in one. Add friends to your ForeFinder network to create a private tee time invitation, or send out an invite to the entire ForeFinder community to get your slots filled ASAP!
 
 [![Build Status][travis-image]][travis-url]
 - Developed in tandem with a team from the front-end program at [Turing School of Software & Design](https://turing.edu/) (view their repo [here](https://github.com/foreFinder/fore-finder-fe)
