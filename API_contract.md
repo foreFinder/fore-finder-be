@@ -243,7 +243,7 @@ Example Response:
 }
 ```
 
-### POST Host & Add Tee Time (#13, #21)
+### POST Host & Add Tee Time
 ##### Resource URL
 ```
 POST /api/v1/event
@@ -380,7 +380,7 @@ Example Response:
    }
 }
 ```
-### GET All Player Details ()
+### GET All Player Details
 ##### Resource URL
 ```
 GET /api/v1/players
