@@ -7,11 +7,14 @@ Request Parameters:
 | GET | /api/v1/courses | returns all courses available for user to select from |
 | GET | /api/v1/events | returns all available events, including ability to limit to events open to community, use to populate host view |
 | POST | /api/v1/event | creates a new tee-time (event) |
+| DELETE | /api/v1/event | destroys an existing tee-time (event) |
 | GET | /api/v1/event/{event_id} | fetch details for a specific tee time (includes details on invites accepted) |
 | GET  | /api/v1/players | fetch details for all players |
 | GET | /api/v1/players/{player_id}/events | fetch all events for a single player |
-| PATCH | /api/v1/player-events | accept or decline invitation |
-| POST | /api/v1/friendship | add a friend |
+| PATCH | /api/v1/player-event | accept or decline invitation |
+| POST | /api/v1/friendship | add a friendship |
+| DELETE | /api/v1/friendship | remove a friendship |
+
 
 ### GET All courses detail
 ##### Resource URL
@@ -341,7 +344,7 @@ Example Response:
 DELETE /api/v1/event/{event_id}
 ```
 
-### POST Accept or Decline Tee Time
+### PATCH Accept or Decline Tee Time
 ##### Resource URL
 ```
 PATCH /api/v1/player-event
