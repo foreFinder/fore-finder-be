@@ -11,15 +11,11 @@ class Player < ApplicationRecord
   validates :email, presence: true
 
   def friends_list
-    followees.map do |followee|
-      followee.id
-    end
+    followees.pluck(:id)
   end
 
   def events_list
-    events = player_events.where(invite_status: :accepted)
-    events.map do |event|
-      event.event_id
-    end
+    player_events.where(invite_status: :accepted)
+    .pluck(:event_id)
   end
 end
