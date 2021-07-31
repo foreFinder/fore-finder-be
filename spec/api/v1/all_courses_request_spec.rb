@@ -5,7 +5,7 @@ RSpec.describe "All courses API endpoint" do
     it 'returns all courses' do
       course_1 = Course.create!(id: 1, name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
       course_2 = Course.create!(id: 2, name: 'City Park Golf Course', street: '3181 E. 23rd Avenue', city: 'Denver', state: 'Colorado', zip_code: '80205', phone: '720.865.3410', cost: 65)
-
+      
       get '/api/v1/courses'
 
       expect(response).to be_successful
