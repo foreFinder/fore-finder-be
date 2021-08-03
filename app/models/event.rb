@@ -13,31 +13,23 @@ class Event < ApplicationRecord
   validates_inclusion_of :private, in: [true, false]
 
   def players_accepting_invitation
-    accepted_players = player_events.where(invite_status: :accepted)
-    accepted_players.map do |accepted_player|
-      accepted_player.player_id
-    end
+    player_events.where(invite_status: :accepted)
+    .pluck(:player_id)
   end
 
   def players_declining_invitation
-    players = player_events.where(invite_status: :declined)
-    players.map do |player|
-      player.player_id
-    end
+    player_events.where(invite_status: :declined)
+    .pluck(:player_id)
   end
 
   def players_pending_invitation
-    players = player_events.where(invite_status: :pending)
-    players.map do |player|
-      player.player_id
-    end
+    player_events.where(invite_status: :pending)
+    .pluck(:player_id)
   end
 
   def players_closed_invitation
-    players = player_events.where(invite_status: :closed)
-    players.map do |player|
-      player.player_id
-    end
+    player_events.where(invite_status: :closed)
+    .pluck(:player_id)
   end
 
   def calculate_remaining_spots
