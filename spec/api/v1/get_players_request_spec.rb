@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "Get All Players Endpoint" do
   describe "happy path" do
     it 'returns all players with friend and event details' do
-      player_1 = Player.create!(name: 'Eric Rabun', phone: "999.999.1234", email: "test1@test.com")
-      player_2 = Player.create!(name: 'Tyson McNutt', phone: "999.999.1235" , email: "test2@test.com")
-      player_3 = Player.create!(name: 'Jon Schlandt', phone: "999.999.1236", email: "test3@test.com")
+      player_1 = Player.create!(name: 'Eric Rabun', phone: "999.999.1234", email: "test1@test.com", username: "username1", password: "password")
+      player_2 = Player.create!(name: 'Tyson McNutt', phone: "999.999.1235" , email: "test2@test.com", username: "username2", password: "password")
+      player_3 = Player.create!(name: 'Jon Schlandt', phone: "999.999.1236", email: "test3@test.com", username: "username3", password: "password")
       Friendship.create!(follower_id: player_1.id, followee_id: player_2.id)
       Friendship.create!(follower_id: player_1.id, followee_id: player_3.id)
       Friendship.create!(follower_id: player_2.id, followee_id: player_1.id)
