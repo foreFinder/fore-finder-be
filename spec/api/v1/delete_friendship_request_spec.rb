@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Create friendship API Endpoint" do
   describe "happy path" do
     it "deletes a friendship" do
-      player_1 = Player.create!(name: 'player 1', phone: "999.999.1234", email: "test1@test.com")
-      player_2 = Player.create!(name: 'player 2', phone: "999.999.1235", email: "test2@test.com")
+      player_1 = Player.create!(id: 1, name: 'player 1', phone: "999.999.1234", email: "test1@test.com", username: "username1", password: "password")
+      player_2 = Player.create!(id: 2, name: 'player 2', phone: "999.999.1235", email: "test2@test.com", username: "username2", password: "password")
       Friendship.create!(follower_id:player_1.id, followee_id:player_2.id)
 
       friendship_params = {
