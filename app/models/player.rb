@@ -8,7 +8,11 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
   validates :phone, presence: true
-  validates :email, presence: true
+  validates :email, uniqueness: true, presence: true
+  validates :username, uniqueness: true
+  validates :email, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :password, presence: { require: true }
+  has_secure_password
 
   def friends_list
     followees.pluck(:id)
