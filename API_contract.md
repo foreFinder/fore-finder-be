@@ -10,6 +10,7 @@ Request Parameters:
 | DELETE | /api/v1/event | destroys an existing tee-time (event) |
 | GET | /api/v1/event/{event_id} | fetch details for a specific tee time (includes details on invites accepted) |
 | GET  | /api/v1/players | fetch details for all players |
+| POST | /api/v1/players | create new player |
 | GET | /api/v1/players/{player_id}/events | fetch all events for a single player |
 | PATCH | /api/v1/player-event | accept or decline invitation |
 | POST | /api/v1/friendship | add a friendship |
@@ -426,6 +427,54 @@ Example Response:
   ]
 }
 ```
+
+### POST Player
+##### Resource URL
+```
+POST /api/v1/players
+```
+Request Parameters:
+
+| Request Parameter | Description | Required? |
+| --- | --- | --- |
+| name | player's name | Yes - must be sent in body of request |
+| phone | player's phone number | Yes - must be sent in the body of the request |
+| email | player's email|  Yes - must be sent in the body of the request |
+| username | player's username |  Yes - must be sent in the body of the request |
+| password | player's password | Yes - must be sent in the body of the request |
+| password_confirmation | player's password confirmation | Yes - must be sent in the body of the request |
+
+
+Example Request Body:
+```json
+{
+  "name": "new user",
+  "phone": "999.867.5309",
+  "email": "test@example.com",
+  "username": "test2user",
+  "password": "testpassword",
+  "password_confirmation": "testpassword"
+}
+```
+
+Example Response:    
+```json
+{
+    "data": {
+        "id": "8",
+        "type": "players",
+        "attributes": {
+            "name": "new user",
+            "phone": "999.867.5309",
+            "email": "test@example.com",
+            "username": "test2user",
+            "friends": [],
+            "events": []
+        }
+    }
+}
+```
+
 ### POST Add Friendship
 ##### Resource URL
 ```
