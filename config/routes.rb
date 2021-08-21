@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post "/event", to: "events#create"
       delete "/event/:id", to: "events#destroy"
       get "/players", to: "players#index"
+      post "/players", to: "players#create"
       patch "/player-event", to: "player_events#update"
       get "/players/:player_id/events", to: "events#index"
       post "/friendship", to: "friendships#create"
