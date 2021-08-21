@@ -15,6 +15,7 @@ Request Parameters:
 | DELETE | /api/v1/event | destroys an existing tee-time (event) |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#delete-single-event)
 | GET | /api/v1/event/{event_id} | fetch details for a specific tee time (includes details on invites accepted) |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#get-single-event)
 | GET  | /api/v1/players | fetch details for all players |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#get-all-player-details)
+| POST | /api/v1/players | create new player | [JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#post-player)
 | GET | /api/v1/players/{player_id}/events | fetch all events for a single player |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#get-all-events-for-single-player)
 | PATCH | /api/v1/player-event | accept or decline invitation |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#get-all-events-for-single-player)
 | POST | /api/v1/friendship | add a friendship |[JSON](https://github.com/foreFinder/fore-finder-be/blob/main/API_contract.md#resource-url-8)
