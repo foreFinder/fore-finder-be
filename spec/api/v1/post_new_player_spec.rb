@@ -13,7 +13,7 @@ RSpec.describe "Create a new player" do
         })
       headers = {"CONTENT_TYPE" => "application/json"}
 
-      post '/api/v1/players', headers: headers, params: JSON.generate(player: player_params)
+      post '/api/v1/players', headers: headers, params: JSON.generate(player_params)
 
       new_player_data = JSON.parse(response.body, symbolize_names: true)
 
@@ -50,5 +50,89 @@ RSpec.describe "Create a new player" do
 
       expect(new_player_data[:data][:attributes]).to_not have_key(:password)
     end
+  end
+
+  describe "sad path" do
+    it "returns an error if passwords do not match" do
+      player_params = ({
+          "name": "first last",
+          "phone": "999.867.5309",
+          "email": "test@example.com",
+          "username": "test1user",
+          "password": "testpassword",
+          "password_confirmation": "wrongtestpassword"
+        })
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/players', headers: headers, params: JSON.generate(player_params)
+
+      new_player_data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(400)
+      expect(new_player_data).to have_key(:errors)
+      expect(new_player_data[:errors][0][:message]).to be_a(String)
+    end
+
+    it 'returns an error if email already taken' do
+      player_1 = Player.create!(id: 1, name: 'first last', phone: "999.867.5309", email: "test@example.com", username: "test1user", password: "testpassword")
+
+      player_params = ({
+          "name": "first last",
+          "phone": "999.867.5309",
+          "email": "test@example.com",
+          "username": "test1user",
+          "password": "testpassword",
+          "password_confirmation": "testpassword"
+        })
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/players', headers: headers, params: JSON.generate(player_params)
+
+      new_player_data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(400)
+      expect(new_player_data).to have_key(:errors)
+      expect(new_player_data[:errors][0][:message]).to be_a(String)
+    end
+  end
+
+  it 'returns an error if email field missing' do
+    player_params = ({
+        "name": "first last",
+        "phone": "999.867.5309",
+        "email": "",
+        "username": "test1user",
+        "password": "testpassword",
+        "password_confirmation": "testpassword"
+      })
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/players', headers: headers, params: JSON.generate(player_params)
+
+    new_player_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(400)
+    expect(new_player_data).to have_key(:errors)
+    expect(new_player_data[:errors][0][:message]).to be_a(String)
+  end
+
+  it 'returns an error if email not valid' do
+    player_params = ({
+        "name": "first last",
+        "phone": "999.867.5309",
+        "email": "incomplete@gmail",
+        "username": "test1user",
+        "password": "testpassword",
+        "password_confirmation": "testpassword"
+      })
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/players', headers: headers, params: JSON.generate(player_params)
+
+    new_player_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(400)
+    expect(new_player_data).to have_key(:errors)
+    expect(new_player_data[:errors][0][:message]).to be_a(String)
   end
 end
