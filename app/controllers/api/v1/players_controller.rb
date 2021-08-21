@@ -5,15 +5,15 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   def create
-    player = Player.new(player_params)
-    if player.save
-      render json:PlayersSerializer.new(player), status: 201
-    end
+    player = player_params
+    player[:email] = player[:email].downcase
+    new_player = Player.create(player)
+    render json:PlayersSerializer.new(new_player), status: 201
   end
 
   private
 
   def player_params
-    params.require(:player).permit(:name, :phone, :email, :username, :password, :password_confirmation)
+    params.permit(:name, :phone, :email, :username, :password, :password_confirmation)
   end
 end
