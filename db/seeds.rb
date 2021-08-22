@@ -11,12 +11,12 @@ PlayerEvent.destroy_all
 Event.destroy_all
 Player.destroy_all
 
-Player.create!(id: 1, name: 'Amy', phone: "2533597214", email: "jaharamclark@gmail.com")
-Player.create!(id: 2, name: 'Andrew', phone: "3197952720" , email: "keegan.oshea9@gmail.com")
-Player.create!(id: 3, name: 'Amber', phone: "9999991236", email: "test3@test.com")
-Player.create!(id: 4, name: 'Betty', phone: "9999991237", email: "test4@test.com")
-Player.create!(id: 5, name: 'Burt', phone: "9999991238" , email: "test5@test.com")
-Player.create!(id: 6, name: "Cleo", phone: "9999991239" , email: "test6@test.com")
+Player.create!(id: 1, name: 'Amy', phone: "2533597214", email: "jaharamclark@gmail.com", username: "username1", password: "password")
+Player.create!(id: 2, name: 'Andrew', phone: "3197952720" , email: "keegan.oshea9@gmail.com", username: "username2", password: "password")
+Player.create!(id: 3, name: 'Amber', phone: "9999991236", email: "test3@test.com", username: "username3", password: "password")
+Player.create!(id: 4, name: 'Betty', phone: "9999991237", email: "test4@test.com", username: "username4", password: "password")
+Player.create!(id: 5, name: 'Burt', phone: "9999991238" , email: "test5@test.com", username: "username5", password: "password")
+Player.create!(id: 6, name: "Cleo", phone: "9999991239" , email: "test6@test.com", username: "username6", password: "password")
 
 Course.create!(id: 1, name: 'Green Valley Ranch Golf Club', street: '4900 Himalaya Road', city: 'Denver', state: 'Colorado', zip_code: '80249', phone: '303.371.3131', cost: 80)
 Course.create!(id: 2, name: 'City Park Golf Course', street: '3181 E. 23rd Avenue', city: 'Denver', state: 'Colorado', zip_code: '80205', phone: '720.865.3410', cost: 65)
@@ -26,6 +26,7 @@ Course.create!(id: 4, name: 'Willis Case Golf Course', street: '4999 Vrain Stree
 Event.create!(id: 1, course_id: 1, date: '08-01-2021', tee_time: '13:20', open_spots: 3, number_of_holes: "9", host_id: 1, private: true)
 Event.create!(id: 2, course_id: 2, date: '08-05-2021', tee_time: '14:20', open_spots: 4, number_of_holes: "18", host_id: 2, private: true)
 Event.create!(id: 3, course_id: 3, date: '08-10-2021', tee_time: '15:20', open_spots: 2, number_of_holes: "9", host_id: 3, private: false)
+Event.create!(id: 4, course_id: 4, date: '09-30-2021', tee_time: '15:20', open_spots: 2, number_of_holes: "9", host_id: 4, private: false)
 
 #A name friendships - only friends with other A's
 Friendship.create!(follower_id: 1, followee_id: 2)
