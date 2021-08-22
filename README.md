@@ -5,6 +5,7 @@
 - Developed in tandem with a team from the front-end program at [Turing School of Software & Design](https://turing.edu/) (view their repo [here](https://github.com/foreFinder/fore-finder-fe))
 
 # API Endpoints
+Base URL `https://fore-finder-be.herokuapp.com/`
 Request Parameters:
 
 | HTTP Verb | Path | Use Case | View JSON Example |
