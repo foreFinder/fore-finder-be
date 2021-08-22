@@ -1,4 +1,6 @@
 ## API Endpoints
+Base URL
+`https://fore-finder-be.herokuapp.com`
 
 Request Parameters:
 
@@ -20,7 +22,7 @@ Request Parameters:
 ### GET All courses detail
 ##### Resource URL
 ```
-GET /api/v1/courses
+GET https://fore-finder-be.herokuapp.com/api/v1/courses
 ```
 Example Response:    
 ```json
@@ -84,11 +86,11 @@ Example Response:
 ### GET All Events
 ##### Resource URL
 ```
-GET /api/v1/events
+GET https://fore-finder-be.herokuapp.com/api/v1/events
 ```
 Optional - add query parameter to only show public events
 ```
-GET /api/v1/events?private=false
+GET https://fore-finder-be.herokuapp.com/api/v1/events?private=false
 ```
 
 Example Response:    
@@ -180,7 +182,7 @@ Example Response:
 ### GET All Events for Single Player
 ##### Resource URL
 ```
-GET /api/v1/players/{player_id}/events
+GET https://fore-finder-be.herokuapp.com/api/v1/players/{player_id}/events
 ```
 Example Response:    
 ```json
@@ -247,7 +249,7 @@ Example Response:
 ### POST Host & Add Tee Time
 ##### Resource URL
 ```
-POST /api/v1/event
+POST https://fore-finder-be.herokuapp.com/api/v1/event
 ```
 Request Parameters:
 
@@ -308,7 +310,7 @@ Example Response:
 ### GET Single Event
 ##### Resource URL
 ```
-GET /api/v1/event/{event_id}
+GET https://fore-finder-be.herokuapp.com/api/v1/event/{event_id}
 ```
 Example Response:    
 ```json
@@ -342,7 +344,7 @@ Example Response:
 ### DELETE Single Event
 ##### Resource URL
 ```
-DELETE /api/v1/event/{event_id}
+DELETE https://fore-finder-be.herokuapp.com/api/v1/event/{event_id}
 ```
 
 ### PATCH Accept or Decline Tee Time
@@ -384,7 +386,7 @@ Example Response:
 ### GET All Player Details
 ##### Resource URL
 ```
-GET /api/v1/players
+GET https://fore-finder-be.herokuapp.com/api/v1/players
 ```
 Example Response:    
 ```json
@@ -431,7 +433,7 @@ Example Response:
 ### POST Player
 ##### Resource URL
 ```
-POST /api/v1/players
+POST https://fore-finder-be.herokuapp.com/api/v1/players
 ```
 Request Parameters:
 
@@ -478,7 +480,7 @@ Example Response:
 ### POST Add Friendship
 ##### Resource URL
 ```
-POST /api/v1/friendship
+POST https://fore-finder-be.herokuapp.com/api/v1/friendship
 ```
 Request Parameters:
 
@@ -527,7 +529,7 @@ Example Response:
 ### DELETE Remove Friendship
 ##### Resource URL
 ```
-DELETE /api/v1/friendship
+DELETE https://fore-finder-be.herokuapp.com/api/v1/friendship
 ```
 Request Parameters:
 
