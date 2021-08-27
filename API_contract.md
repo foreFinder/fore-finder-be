@@ -17,6 +17,8 @@ Request Parameters:
 | PATCH | /api/v1/player-event | accept or decline invitation |
 | POST | /api/v1/friendship | add a friendship |
 | DELETE | /api/v1/friendship | remove a friendship |
+| POST | /api/v1/sessions | user login |
+
 
 
 ### GET All courses detail
@@ -545,4 +547,42 @@ Example Request Body:
     "follower_id": 3,
     "followee_id": 6
   }
+```
+
+### POST Create Session
+##### Resource URL
+```
+POST https://fore-finder-be.herokuapp.com/api/v1/sessions
+```
+Request Parameters:
+
+| Request Parameter | Description | Required? |
+| --- | --- | --- |
+| email | player's email | Yes - must be sent in body of request |
+| password | player's password | Yes - must be sent in body of request |
+
+Example Request Body:
+```json
+  {
+    "email": "test@example.com",
+    "password": "testpassword"
+  }
+```
+
+Example Response:    
+```json
+{
+    "data": {
+        "id": "8",
+        "type": "players",
+        "attributes": {
+            "name": "new user",
+            "phone": "999.867.5309",
+            "email": "test@example.com",
+            "username": "test2user",
+            "friends": [],
+            "events": []
+        }
+    }
+}
 ```
