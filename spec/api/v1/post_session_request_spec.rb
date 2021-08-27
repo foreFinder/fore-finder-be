@@ -45,4 +45,38 @@ RSpec.describe "user login endpoint" do
       expect(session_data[:data][:attributes]).to_not have_key(:password)
     end
   end
+
+  xit "returns an error is password is not correct" do
+    registered_user = Player.create!(name: 'player 1', phone: "999.999.1234", email: "test1@test.com", username: "username1", password: "password")
+    user_login = ({
+          "email": "test1@test.com",
+          "password": "wrong password"
+      })
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(user_login)
+
+    session_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(401)
+    expect(session_data).to have_key(:errors)
+    expect(session_data[:errors][0][:message]).to be_a(String)
+  end
+
+  it "it returns an error if email not found" do
+    registered_user = Player.create!(name: 'player 1', phone: "999.999.1234", email: "test1@test.com", username: "username1", password: "password")
+    user_login = ({
+          "email": "wrongemail@test.com",
+          "password": "password"
+      })
+    headers = {"CONTENT_TYPE" => "application/json"}
+
+    post '/api/v1/sessions', headers: headers, params: JSON.generate(user_login)
+
+    session_data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(404)
+    expect(session_data).to have_key(:errors)
+    expect(session_data[:errors][0][:message]).to be_a(String)
+  end
 end
