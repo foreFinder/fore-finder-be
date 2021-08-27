@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "/players/:player_id/events", to: "events#index"
       post "/friendship", to: "friendships#create"
       delete "/friendship", to: "friendships#destroy"
+      post "/sessions", to: "sessions#create"
     end
   end
 end

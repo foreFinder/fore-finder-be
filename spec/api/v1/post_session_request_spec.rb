@@ -10,7 +10,7 @@ RSpec.describe "user login endpoint" do
         })
       headers = {"CONTENT_TYPE" => "application/json"}
 
-      post 'api/vi/sessions', headers: headers, params: JSON.generate(user_login)
+      post '/api/v1/sessions', headers: headers, params: JSON.generate(user_login)
 
       session_data = JSON.parse(response.body, symbolize_names: true)
 
