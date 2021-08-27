@@ -4,6 +4,8 @@ class Api::V1::SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       render json: PlayersSerializer.new(user), status: 200
+    else
+      raise InvalidCredentials
     end
   end
 end

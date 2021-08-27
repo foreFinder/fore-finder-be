@@ -46,7 +46,7 @@ RSpec.describe "user login endpoint" do
     end
   end
 
-  xit "returns an error is password is not correct" do
+  it "returns an error is password is not correct" do
     registered_user = Player.create!(name: 'player 1', phone: "999.999.1234", email: "test1@test.com", username: "username1", password: "password")
     user_login = ({
           "email": "test1@test.com",
