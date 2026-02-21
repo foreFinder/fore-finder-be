@@ -1,4 +1,4 @@
 class PlayerEventSerializer
-  include FastJsonapi::ObjectSerializer
+  include JSONAPI::Serializer
   attributes :player_id, :event_id, :invite_status
 end

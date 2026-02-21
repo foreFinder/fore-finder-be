@@ -1,5 +1,5 @@
 class CourseSerializer
-  include FastJsonapi::ObjectSerializer
+  include JSONAPI::Serializer
 
   attributes :name, :street, :city, :state, :zip_code, :phone, :cost
 end

@@ -1,5 +1,5 @@
 class EventSerializer
-  include FastJsonapi::ObjectSerializer
+  include JSONAPI::Serializer
 
   attributes :course_name, :date, :tee_time, :open_spots, :number_of_holes, :private, :host_name, :host_id
   attribute :accepted, &:players_accepting_invitation

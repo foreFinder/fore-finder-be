@@ -1,5 +1,5 @@
 class FriendshipSerializer
-  include FastJsonapi::ObjectSerializer
+  include JSONAPI::Serializer
 
   attributes :follower, :followee
 end
